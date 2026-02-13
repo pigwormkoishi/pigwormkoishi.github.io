@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 甲基硫代磷酸二乙酯 | PigWorm的个人主页</title>
+    <link>https://pigwormkoishi.github.io/posts/</link>
+    <description>Recent content in Posts on 甲基硫代磷酸二乙酯 | PigWorm的个人主页</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <copyright>© 2026 PigWorm</copyright>
+    <lastBuildDate>Thu, 12 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://pigwormkoishi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>犀飞利</title>
+      <link>https://pigwormkoishi.github.io/posts/sheaffers/</link>
+      <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://pigwormkoishi.github.io/posts/sheaffers/</guid>
+      <description>犀飞利品牌介绍</description>
+      
+    </item>
+    
+    <item>
+      <title>英雄100</title>
+      <link>https://pigwormkoishi.github.io/posts/hero100/</link>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://pigwormkoishi.github.io/posts/hero100/</guid>
+      <description>英雄100金笔介绍</description>
+      
+    </item>
+    
+  </channel>
+</rss>
