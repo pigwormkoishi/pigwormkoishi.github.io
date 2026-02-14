@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1183"
+    "wordCount": "1181"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1183 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1181 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
     
 
     
@@ -831,12 +831,8 @@
     </li>
     <li><a href="#2026-02-15-更新细节美化与反馈增强">2026-02-15 更新：细节美化与反馈增强</a>
       <ul>
-        <li>
-          <ul>
-            <li><a href="#1-鼠标点击涟漪反馈">1. 鼠标点击“涟漪”反馈</a></li>
-            <li><a href="#2-版权栏优化">2. 版权栏优化</a></li>
-          </ul>
-        </li>
+        <li><a href="#鼠标点击涟漪反馈">鼠标点击“涟漪”反馈</a></li>
+        <li><a href="#版权栏优化">版权栏优化</a></li>
         <li><a href="#解决-hugo-中文字数统计失效">解决 Hugo 中文字数统计失效</a>
           <ul>
             <li><a href="#-问题排查">🔍 问题排查</a></li>
@@ -876,12 +872,8 @@
     </li>
     <li><a href="#2026-02-15-更新细节美化与反馈增强">2026-02-15 更新：细节美化与反馈增强</a>
       <ul>
-        <li>
-          <ul>
-            <li><a href="#1-鼠标点击涟漪反馈">1. 鼠标点击“涟漪”反馈</a></li>
-            <li><a href="#2-版权栏优化">2. 版权栏优化</a></li>
-          </ul>
-        </li>
+        <li><a href="#鼠标点击涟漪反馈">鼠标点击“涟漪”反馈</a></li>
+        <li><a href="#版权栏优化">版权栏优化</a></li>
         <li><a href="#解决-hugo-中文字数统计失效">解决 Hugo 中文字数统计失效</a>
           <ul>
             <li><a href="#-问题排查">🔍 问题排查</a></li>
@@ -1015,27 +1007,27 @@
 </h2>
 <p>针对全局交互和版权字体进行了最后的微调。</p>
 
-<h4 class="relative group">1. 鼠标点击“涟漪”反馈
-    <div id="1-鼠标点击涟漪反馈" class="anchor"></div>
+<h3 class="relative group">鼠标点击“涟漪”反馈
+    <div id="鼠标点击涟漪反馈" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#1-%e9%bc%a0%e6%a0%87%e7%82%b9%e5%87%bb%e6%b6%9f%e6%bc%aa%e5%8f%8d%e9%a6%88" aria-label="锚点">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e9%bc%a0%e6%a0%87%e7%82%b9%e5%87%bb%e6%b6%9f%e6%bc%aa%e5%8f%8d%e9%a6%88" aria-label="锚点">#</a>
     </span>
     
-</h4>
+</h3>
 <p>由于开启了粒子的 <code>repulse</code>（点击排斥）模式，为了让这种物理反馈在视觉上更直观，添加了一个基于 CSS 动画的涟漪效果。</p>
 <blockquote><p><strong>技术细节：</strong> 采用 <code>transform: scale()</code> 代替 <code>width/height</code> 变更，利用 GPU 加速确保动画在点击时达到 60FPS。</p>
 </blockquote>
-<h4 class="relative group">2. 版权栏优化
-    <div id="2-版权栏优化" class="anchor"></div>
+<h3 class="relative group">版权栏优化
+    <div id="版权栏优化" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2-%e7%89%88%e6%9d%83%e6%a0%8f%e4%bc%98%e5%8c%96" aria-label="锚点">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%89%88%e6%9d%83%e6%a0%8f%e4%bc%98%e5%8c%96" aria-label="锚点">#</a>
     </span>
     
-</h4>
+</h3>
 <p>弃用了不稳定的等宽字体，转而使用 <strong>系统字体族 (System Font Stack)</strong>。</p>
 <ul>
 <li><strong>字体：</strong> <code>-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, ...</code></li>
