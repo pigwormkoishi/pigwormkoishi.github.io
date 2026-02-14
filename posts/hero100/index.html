@@ -933,22 +933,21 @@
     #footer-copyright {
         display: block;
         width: 100%;
-         
-        padding: 120px 20px 40px 20px; 
+        padding: 50px 20px 20px 20px; 
         color: rgba(136, 136, 136, 0.6);
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 13px;
         letter-spacing: 0.5px;
-        line-height: 1.8;
+        line-height: 2.2;
         clear: both;
         box-sizing: border-box;
         text-align: left;
     }
 
      
-    #waifu {
-        right: 20px !important;     
-        left: auto !important;      
+    html body #waifu {
+        right: 20px !important;
+        left: auto !important;
         bottom: 0px !important;
         position: fixed !important;
         z-index: 9999 !important;
@@ -958,29 +957,21 @@
     #waifu-tips {
         background-color: rgba(0, 0, 0, 0.4) !important;
         color: #ffffff !important;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
         backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
-        font-weight: 600 !important;
         border-radius: 12px !important;
         padding: 5px 10px;
     }
 
      
     @media (max-width: 768px) {
+         
         #footer-copyright {
-            padding: 40px 15px 15px 15px;
+            padding: 180px 20px 80px 20px !important; 
             font-size: 11px;
         }
 
          
-        html, body, a, button {
-            cursor: auto !important;
-        }
-
-         
-        #waifu {
+        html body #waifu {
             transform: scale(0.5) !important; 
             transform-origin: right bottom !important; 
             right: 0px !important;
@@ -988,13 +979,26 @@
             bottom: -10px !important; 
         }
 
-        #waifu-tips, #waifu-tool { 
-            display: none !important; 
+         
+        .scroll-to-top, #scroll-to-top {
+            right: auto !important;   
+            left: 20px !important;    
+            bottom: 20px !important;  
+            position: fixed !important;
+            display: flex !important;
         }
 
          
+        #waifu-tips, #waifu-tool { 
+            display: none !important; 
+        }
         #particles-js {
             pointer-events: none !important;
+        }
+        
+         
+        html, body, a, button {
+            cursor: auto !important;
         }
     }
 </style>
@@ -1009,13 +1013,11 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script type="text/javascript">
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
     if (window.particlesJS) {
         particlesJS('particles-js', {
             "particles": {
                 "number": { "value": 60 },
                 "color": { "value": "#888888" },
-                "shape": { "type": "circle" },
                 "opacity": { "value": 0.5 },
                 "size": { "value": 2 },
                 "line_linked": { "enable": false },
@@ -1028,15 +1030,13 @@
                     "onclick": { "enable": !isMobile, "mode": "push" }
                 },
                 "modes": {
-                    "grab": { "distance": 200, "line_linked": { "enable": true, "opacity": 0.5 } },
-                    "push": { "particles_nb": 4 }
+                    "grab": { "distance": 200, "line_linked": { "enable": true, "opacity": 0.5 } }
                 }
             },
             "retina_detect": true
         });
     }
 </script>
-
 <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0/dist/autoload.js"></script><div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
