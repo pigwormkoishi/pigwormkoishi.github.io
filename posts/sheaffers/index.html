@@ -896,6 +896,19 @@
         </span>
         <span class="flex flex-col items-end">
           
+            <a
+              class="flex text-right text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+              href="/posts/hugo/">
+              <span class="leading-6">
+                从零开始：PigWorm 的个人网站设计日志&ensp;<span class="inline-block rtl:rotate-180">&rarr;</span>
+              </span>
+            </a>
+            
+              <span class="me-6 mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time>
+              </span>
+            
+          
         </span>
       </div>
     </div>
@@ -931,15 +944,15 @@
       </main><style type="text/css">
      
     #footer-copyright {
-        position: fixed;
-        left: 20px;
-        bottom: 15px;
-        z-index: 9998;  
-        color: rgba(136, 136, 136, 0.8);  
+        display: block;
+        width: 100%;
+        padding: 40px 20px 20px 20px;  
+        color: rgba(136, 136, 136, 0.6);  
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 13px;
         letter-spacing: 0.5px;
-        pointer-events: none;  
+        clear: both;  
+        box-sizing: border-box;
     }
 
      
@@ -952,7 +965,6 @@
         line-height: 0;
     }
 
-     
     #waifu-tips {
         background-color: rgba(0, 0, 0, 0.4) !important;
         color: #ffffff !important;
@@ -967,12 +979,9 @@
 
      
     @media (max-width: 768px) {
-         
         #footer-copyright {
-            left: 10px;
-            bottom: 10px;
+            padding: 30px 15px 15px 15px;
             font-size: 11px;
-            opacity: 0.6;
         }
 
          
@@ -988,13 +997,8 @@
             bottom: -10px !important; 
         }
 
-         
-        #waifu-tips, 
-        #waifu-tool { 
+        #waifu-tips, #waifu-tool { 
             display: none !important; 
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
         }
 
          
@@ -1010,7 +1014,6 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script type="text/javascript">
-     
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     if (window.particlesJS) {
@@ -1021,35 +1024,17 @@
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.5 },
                 "size": { "value": 2 },
-                "line_linked": { 
-                    "enable": false 
-                },
-                "move": { 
-                    "enable": true, 
-                    "speed": 1.2, 
-                    "out_mode": "out" 
-                }
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1.2, "out_mode": "out" }
             },
             "interactivity": {
                 "detect_on": "window",
                 "events": {
-                    "onhover": { 
-                        "enable": !isMobile, 
-                        "mode": "grab" 
-                    },
-                    "onclick": { 
-                        "enable": !isMobile, 
-                        "mode": "push" 
-                    }
+                    "onhover": { "enable": !isMobile, "mode": "grab" },
+                    "onclick": { "enable": !isMobile, "mode": "push" }
                 },
                 "modes": {
-                    "grab": { 
-                        "distance": 200, 
-                        "line_linked": { 
-                            "enable": true, 
-                            "opacity": 0.5 
-                        } 
-                    },
+                    "grab": { "distance": 200, "line_linked": { "enable": true, "opacity": 0.5 } },
                     "push": { "particles_nb": 4 }
                 }
             },

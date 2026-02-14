@@ -21,8 +21,6 @@
 
   
   
-    <meta name="description" content="PigWorm 的数字化档案">
-  
   
   
   
@@ -62,14 +60,12 @@
   <meta property="og:url" content="https://pigwormkoishi.github.io/tags/">
   <meta property="og:site_name" content="甲基硫代磷酸二乙酯 | PigWorm的个人主页">
   <meta property="og:title" content="Tags">
-  <meta property="og:description" content="PigWorm 的数字化档案">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="website">
 
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Tags">
-  <meta name="twitter:description" content="PigWorm 的数字化档案">
 
   
   
@@ -231,10 +227,10 @@
       "name": "PigWorm"
     },
     "copyrightYear": "2026",
-    "dateCreated": "2026-02-12T00:00:00\u002b00:00",
-    "datePublished": "2026-02-12T00:00:00\u002b00:00",
+    "dateCreated": "2026-02-14T00:00:00\u002b00:00",
+    "datePublished": "2026-02-14T00:00:00\u002b00:00",
     
-    "dateModified": "2026-02-12T00:00:00\u002b00:00",
+    "dateModified": "2026-02-14T00:00:00\u002b00:00",
     
     
     
@@ -562,6 +558,23 @@
   <h2 class="flex items-center">
     <a
       class="text-xl font-medium decoration-primary-500 hover:underline hover:underline-offset-2"
+      href="/tags/hugo/"
+      >Hugo</a
+    >
+    
+      <span class="px-2 text-base text-primary-500">&middot;</span>
+      <span class="text-base text-neutral-400">
+        1
+      </span>
+    
+  </h2>
+</article>
+
+      
+        <article class="w-full px-2 my-3 overflow-hidden sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4">
+  <h2 class="flex items-center">
+    <a
+      class="text-xl font-medium decoration-primary-500 hover:underline hover:underline-offset-2"
       href="/tags/space/"
       >Space</a
     >
@@ -569,6 +582,40 @@
       <span class="px-2 text-base text-primary-500">&middot;</span>
       <span class="text-base text-neutral-400">
         2
+      </span>
+    
+  </h2>
+</article>
+
+      
+        <article class="w-full px-2 my-3 overflow-hidden sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4">
+  <h2 class="flex items-center">
+    <a
+      class="text-xl font-medium decoration-primary-500 hover:underline hover:underline-offset-2"
+      href="/tags/%E5%89%8D%E7%AB%AF/"
+      >前端</a
+    >
+    
+      <span class="px-2 text-base text-primary-500">&middot;</span>
+      <span class="text-base text-neutral-400">
+        1
+      </span>
+    
+  </h2>
+</article>
+
+      
+        <article class="w-full px-2 my-3 overflow-hidden sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4">
+  <h2 class="flex items-center">
+    <a
+      class="text-xl font-medium decoration-primary-500 hover:underline hover:underline-offset-2"
+      href="/tags/%E7%BD%91%E7%AB%99%E8%AE%BE%E8%AE%A1/"
+      >网站设计</a
+    >
+    
+      <span class="px-2 text-base text-primary-500">&middot;</span>
+      <span class="text-base text-neutral-400">
+        1
       </span>
     
   </h2>
@@ -603,15 +650,15 @@
       </main><style type="text/css">
      
     #footer-copyright {
-        position: fixed;
-        left: 20px;
-        bottom: 15px;
-        z-index: 9998;  
-        color: rgba(136, 136, 136, 0.8);  
+        display: block;
+        width: 100%;
+        padding: 40px 20px 20px 20px;  
+        color: rgba(136, 136, 136, 0.6);  
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 13px;
         letter-spacing: 0.5px;
-        pointer-events: none;  
+        clear: both;  
+        box-sizing: border-box;
     }
 
      
@@ -624,7 +671,6 @@
         line-height: 0;
     }
 
-     
     #waifu-tips {
         background-color: rgba(0, 0, 0, 0.4) !important;
         color: #ffffff !important;
@@ -639,12 +685,9 @@
 
      
     @media (max-width: 768px) {
-         
         #footer-copyright {
-            left: 10px;
-            bottom: 10px;
+            padding: 30px 15px 15px 15px;
             font-size: 11px;
-            opacity: 0.6;
         }
 
          
@@ -660,13 +703,8 @@
             bottom: -10px !important; 
         }
 
-         
-        #waifu-tips, 
-        #waifu-tool { 
+        #waifu-tips, #waifu-tool { 
             display: none !important; 
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
         }
 
          
@@ -682,7 +720,6 @@
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script type="text/javascript">
-     
     var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     if (window.particlesJS) {
@@ -693,35 +730,17 @@
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.5 },
                 "size": { "value": 2 },
-                "line_linked": { 
-                    "enable": false 
-                },
-                "move": { 
-                    "enable": true, 
-                    "speed": 1.2, 
-                    "out_mode": "out" 
-                }
+                "line_linked": { "enable": false },
+                "move": { "enable": true, "speed": 1.2, "out_mode": "out" }
             },
             "interactivity": {
                 "detect_on": "window",
                 "events": {
-                    "onhover": { 
-                        "enable": !isMobile, 
-                        "mode": "grab" 
-                    },
-                    "onclick": { 
-                        "enable": !isMobile, 
-                        "mode": "push" 
-                    }
+                    "onhover": { "enable": !isMobile, "mode": "grab" },
+                    "onclick": { "enable": !isMobile, "mode": "push" }
                 },
                 "modes": {
-                    "grab": { 
-                        "distance": 200, 
-                        "line_linked": { 
-                            "enable": true, 
-                            "opacity": 0.5 
-                        } 
-                    },
+                    "grab": { "distance": 200, "line_linked": { "enable": true, "opacity": 0.5 } },
                     "push": { "particles_nb": 4 }
                 }
             },
