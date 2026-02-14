@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "109"
+    "wordCount": "144"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>109 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>144 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
     
 
     
@@ -829,6 +829,16 @@
         </li>
       </ul>
     </li>
+    <li><a href="#2026-02-15-更新细节美化与反馈增强">2026-02-15 更新：细节美化与反馈增强</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-鼠标点击涟漪反馈">1. 鼠标点击“涟漪”反馈</a></li>
+            <li><a href="#2-版权栏字体与间距优化">2. 版权栏字体与间距优化</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
   </div>
@@ -854,6 +864,16 @@
         <li><a href="#解决配置报错">解决配置报错</a>
           <ul>
             <li><a href="#-关键配置">💡 关键配置</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#2026-02-15-更新细节美化与反馈增强">2026-02-15 更新：细节美化与反馈增强</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-鼠标点击涟漪反馈">1. 鼠标点击“涟漪”反馈</a></li>
+            <li><a href="#2-版权栏字体与间距优化">2. 版权栏字体与间距优化</a></li>
           </ul>
         </li>
       </ul>
@@ -971,6 +991,43 @@
 <p>为保证搜索功能正常运行，单语言时直接命名 <code>languages.toml</code>，不加语言后缀（如 <code>zh-cn.toml</code>），且必须在 <code>config/_default/languages.toml</code> 中明确输出格式，languages.toml需加入以下代码：</p>
 <div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">outputs</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">,</span> <span class="s2">&#34;JSON&#34;</span><span class="p">]</span></span></span></code></pre></div></div>
+
+<h2 class="relative group">2026-02-15 更新：细节美化与反馈增强
+    <div id="2026-02-15-更新细节美化与反馈增强" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2026-02-15-%e6%9b%b4%e6%96%b0%e7%bb%86%e8%8a%82%e7%be%8e%e5%8c%96%e4%b8%8e%e5%8f%8d%e9%a6%88%e5%a2%9e%e5%bc%ba" aria-label="锚点">#</a>
+    </span>
+    
+</h2>
+<p>针对全局交互和版权字体进行了最后的微调。</p>
+
+<h4 class="relative group">1. 鼠标点击“涟漪”反馈
+    <div id="1-鼠标点击涟漪反馈" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#1-%e9%bc%a0%e6%a0%87%e7%82%b9%e5%87%bb%e6%b6%9f%e6%bc%aa%e5%8f%8d%e9%a6%88" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>由于开启了粒子的 <code>repulse</code>（点击排斥）模式，为了让这种物理反馈在视觉上更直观，添加了一个基于 CSS 动画的涟漪效果。</p>
+<blockquote><p><strong>技术细节：</strong> 采用 <code>transform: scale()</code> 代替 <code>width/height</code> 变更，利用 GPU 加速确保动画在点击时达到 60FPS。</p>
+</blockquote>
+<h4 class="relative group">2. 版权栏字体与间距优化
+    <div id="2-版权栏字体与间距优化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#2-%e7%89%88%e6%9d%83%e6%a0%8f%e5%ad%97%e4%bd%93%e4%b8%8e%e9%97%b4%e8%b7%9d%e4%bc%98%e5%8c%96" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>弃用了不稳定的等宽字体，转而使用 <strong>系统字体族 (System Font Stack)</strong>。</p>
+<ul>
+<li><strong>字体：</strong> <code>-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, ...</code></li>
+</ul>
 
           
           
