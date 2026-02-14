@@ -928,77 +928,60 @@
   </a>
 </div>
 
-      </main><script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
+      </main><style type="text/css">
+     
+    #waifu {
+        right: 20px !important;
+        bottom: 0x !important;
+        left: auto !important;
+        position: fixed !important;
+        z-index: 9999 !important;
+    }
 
-<script>
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    const container = document.getElementById('particles-js');
-    const isMobile = window.innerWidth < 768; 
-    const particleCount = isMobile ? 25 : 60; 
+     
+    #waifu-tips {
+        background-color: rgba(0, 0, 0, 0.4) !important;
+        color: #ffffff !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        font-weight: 600 !important;
+        border-radius: 12px !important;
+    }
 
-    if (container) {
-      particlesJS('particles-js', {
-        "particles": {
-          "number": { 
-            "value": particleCount, 
-            "density": { "enable": true, "value_area": 800 } 
-          },
-          "color": { "value": "#ffffff" },
-          "shape": { "type": "circle" },
-          "opacity": {
-            "value": 0.6,
-            "random": true,
-            "anim": { "enable": true, "speed": 2, "opacity_min": 0.2, "sync": false }
-          },
-          "size": { "value": 3.5, "random": true },
-          "line_linked": { "enable": false }, 
-          "move": {
-            "enable": true,
-            "speed": 1.2,
-            "direction": "top",
-            "random": true,
-            "out_mode": "out"
-          }
-        },
-        "interactivity": {
-          "events": { 
-            "onhover": { "enable": !isMobile, "mode": "bubble" }, 
-            "onclick": { "enable": true, "mode": "push" }   
-          },
-          "modes": { 
-            "bubble": { "distance": 150, "size": 8, "duration": 0.3, "opacity": 1 },
-            "push": { "particles_nb": 4 }
-          }
+     
+    @media (max-width: 768px) {
+        #waifu {
+            transform: scale(0.6) !important; 
+            transform-origin: right bottom !important;  
+            right: 10px !important;
+            bottom: -10px !important;     
         }
-      });
+        #waifu-tips { 
+            display: none !important; 
+        }
     }
-  });
+</style>
 
-  
-  L2Dwidget.init({
-    "model": {
-      "jsonPath": "https://cdn.jsdelivr.net/npm/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json",
-      "scale": 1.1 
-    },
-    "display": {
-      "position": "right",
-      "width": 160,
-      "height": 320,
-      "hOffset": 20,
-      "vOffset": 0
-    },
-    "mobile": { 
-      "show": true,       
-      "scale": 0.4        
-    },
-    "react": { 
-      "opacityDefault": 0.7, 
-      "opacityOnHover": 1 
+<div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script type="text/javascript">
+    if (window.particlesJS) {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 40 },
+                "color": { "value": "#888888" },
+                "size": { "value": 2 },
+                "move": { "enable": true, "speed": 1 },
+                "opacity": { "value": 0.5 },
+                "line_linked": { "enable": false }
+            }
+        });
     }
-  });
-</script><div
+</script>
+
+<script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.0/dist/autoload.js"></script><div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
   data-url="https://pigwormkoishi.github.io/">
