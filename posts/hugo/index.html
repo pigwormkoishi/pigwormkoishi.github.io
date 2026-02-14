@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "48"
+    "wordCount": "106"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>48 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>106 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
     
 
     
@@ -894,7 +894,28 @@
 在桌面端开启了 <code>grab</code>（抓取连线）模式。</p>
 <blockquote><p><strong>注意：</strong> 在移动端，我彻底禁用了 <code>pointer-events</code>，不仅是为了省电，更是为了防止滑动页面时产生多余的干扰线条。</p>
 </blockquote></li>
+<li>
+<p><strong>移动端界面优化</strong></p>
+<p>定制了移动端下发高度，防止看板娘阻挡按钮，<code>D:\hugo\dev\layouts\partialsfooter.html</code>中添加：</p>
+</li>
 </ul>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 仅针对手机端大幅度抬高版权信息 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">768px</span><span class="o">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">#</span><span class="nn">footer-copyright</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">padding</span><span class="p">:</span> <span class="mi">180</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">80</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">        <span class="k">font-size</span><span class="p">:</span> <span class="mi">11</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
+<p>修复置顶键和看板娘位置冲突，将置顶键移到了左下角，<code>D:\hugo\dev\assets\css\custom.css</code>中添加：</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 强制将“回到顶部”按钮移至左下角，仅在移动端冲突时建议开启 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">768px</span><span class="o">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nc">scroll-to-top</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">right</span><span class="p">:</span> <span class="kc">auto</span> <span class="cp">!important</span><span class="p">;</span>   <span class="c">/* 清除默认的右侧定位 */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">left</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span>    <span class="c">/* 靠左 20px */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">bottom</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span>  <span class="c">/* 距离底部 20px */</span>
+</span></span><span class="line"><span class="cl">        <span class="k">z-index</span><span class="p">:</span> <span class="mi">50</span><span class="p">;</span>              <span class="c">/* 确保在粒子背景之上 */</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
 
 <h3 class="relative group">解决配置报错
     <div id="解决配置报错" class="anchor"></div>
@@ -916,7 +937,7 @@
     </span>
     
 </h4>
-<p>为保证搜索功能正常运行，单语言时直接命名 <code>languages.toml</code>，不加语言后缀（如 <code>zh-cn.toml</code>），且必须在 <code>config/_default/languages.toml</code> 中明确输出格式。且languages.toml需加入以下代码：</p>
+<p>为保证搜索功能正常运行，单语言时直接命名 <code>languages.toml</code>，不加语言后缀（如 <code>zh-cn.toml</code>），且必须在 <code>config/_default/languages.toml</code> 中明确输出格式，languages.toml需加入以下代码：</p>
 <div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">outputs</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">,</span> <span class="s2">&#34;JSON&#34;</span><span class="p">]</span></span></span></code></pre></div></div>
 
