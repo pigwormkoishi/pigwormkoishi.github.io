@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "106"
+    "wordCount": "109"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>106 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>109 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
     
 
     
@@ -815,10 +815,16 @@
   <ul>
     <li><a href="#-关于个人网站">🏗️ 关于个人网站</a>
       <ul>
-        <li><a href="#交互体验看板娘与粒子">交互体验：看板娘与粒子</a></li>
+        <li><a href="#交互体验看板娘与粒子">交互体验：看板娘与粒子</a>
+          <ul>
+            <li><a href="#live2d-看板娘">Live2D 看板娘</a></li>
+            <li><a href="#particlesjs-粒子背景">Particles.js 粒子背景</a></li>
+            <li><a href="#移动端界面优化">移动端界面优化</a></li>
+          </ul>
+        </li>
         <li><a href="#解决配置报错">解决配置报错</a>
           <ul>
-            <li><a href="#-关键配置提醒">💡 关键配置提醒</a></li>
+            <li><a href="#-关键配置">💡 关键配置</a></li>
           </ul>
         </li>
       </ul>
@@ -838,10 +844,16 @@
   <ul>
     <li><a href="#-关于个人网站">🏗️ 关于个人网站</a>
       <ul>
-        <li><a href="#交互体验看板娘与粒子">交互体验：看板娘与粒子</a></li>
+        <li><a href="#交互体验看板娘与粒子">交互体验：看板娘与粒子</a>
+          <ul>
+            <li><a href="#live2d-看板娘">Live2D 看板娘</a></li>
+            <li><a href="#particlesjs-粒子背景">Particles.js 粒子背景</a></li>
+            <li><a href="#移动端界面优化">移动端界面优化</a></li>
+          </ul>
+        </li>
         <li><a href="#解决配置报错">解决配置报错</a>
           <ul>
-            <li><a href="#-关键配置提醒">💡 关键配置提醒</a></li>
+            <li><a href="#-关键配置">💡 关键配置</a></li>
           </ul>
         </li>
       </ul>
@@ -883,22 +895,41 @@
     </span>
     
 </h3>
-<ul>
-<li>
-<p><strong>Live2D 看板娘</strong>
-引入了交互式 Live2D 模块。</p>
+
+<h4 class="relative group">Live2D 看板娘
+    <div id="live2d-看板娘" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#live2d-%e7%9c%8b%e6%9d%bf%e5%a8%98" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>引入了交互式 Live2D 模块。</p>
 <blockquote><p><strong>注意：</strong> 针对移动端，隐藏了<strong>对话框</strong>和<strong>工具栏</strong>，确保不会遮挡正文阅读，并防止移动端与 PC 端键位冲突（如工具栏<strong>游戏</strong>通过 <code>ESC 键</code> 退出，移动端不可逆）。</p>
-</blockquote></li>
-<li>
-<p><strong>Particles.js 粒子背景</strong>
-在桌面端开启了 <code>grab</code>（抓取连线）模式。</p>
+</blockquote>
+<h4 class="relative group">Particles.js 粒子背景
+    <div id="particlesjs-粒子背景" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#particlesjs-%e7%b2%92%e5%ad%90%e8%83%8c%e6%99%af" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>在桌面端开启了 <code>grab</code>（抓取连线）模式。</p>
 <blockquote><p><strong>注意：</strong> 在移动端彻底禁用了 <code>pointer-events</code>，不仅是为了省电，更是为了防止滑动页面时产生多余的干扰线条。</p>
-</blockquote></li>
-<li>
-<p><strong>移动端界面优化</strong></p>
+</blockquote>
+<h4 class="relative group">移动端界面优化
+    <div id="移动端界面优化" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%a7%bb%e5%8a%a8%e7%ab%af%e7%95%8c%e9%9d%a2%e4%bc%98%e5%8c%96" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
 <p>定制了移动端下发高度，防止看板娘阻挡按钮，<code>D:\hugo\dev\layouts\partials\footer.html</code>中添加：</p>
-</li>
-</ul>
 <div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 仅针对手机端大幅度抬高版权信息 */</span>
 </span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">768px</span><span class="o">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="p">#</span><span class="nn">footer-copyright</span> <span class="p">{</span>
@@ -928,12 +959,12 @@
 </h3>
 <p>在搭建过程中，修复了 <code>languages.toml</code> 的层级逻辑。</p>
 
-<h4 class="relative group">💡 关键配置提醒
-    <div id="-关键配置提醒" class="anchor"></div>
+<h4 class="relative group">💡 关键配置
+    <div id="-关键配置" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#-%e5%85%b3%e9%94%ae%e9%85%8d%e7%bd%ae%e6%8f%90%e9%86%92" aria-label="锚点">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#-%e5%85%b3%e9%94%ae%e9%85%8d%e7%bd%ae" aria-label="锚点">#</a>
     </span>
     
 </h4>
