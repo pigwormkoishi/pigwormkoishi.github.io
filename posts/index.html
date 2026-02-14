@@ -895,7 +895,7 @@
 </div>
 
       </main><style type="text/css">
-        
+     
     #waifu {
         right: 20px !important;
         bottom: 0px !important;
@@ -941,6 +941,11 @@
             opacity: 0 !important;
             pointer-events: none !important;
         }
+
+         
+        #particles-js {
+            pointer-events: none !important;
+        }
     }
 </style>
 
@@ -949,6 +954,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script type="text/javascript">
      
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
     if (window.particlesJS) {
         particlesJS('particles-js', {
             "particles": {
@@ -969,12 +976,13 @@
             "interactivity": {
                 "detect_on": "window",
                 "events": {
+                     
                     "onhover": { 
-                        "enable": true, 
-                        "mode": "grab"  
+                        "enable": !isMobile, 
+                        "mode": "grab" 
                     },
                     "onclick": { 
-                        "enable": true, 
+                        "enable": !isMobile, 
                         "mode": "push" 
                     }
                 },
@@ -982,7 +990,7 @@
                     "grab": { 
                         "distance": 200, 
                         "line_linked": { 
-                            "enable": true,  
+                            "enable": true, 
                             "opacity": 0.5 
                         } 
                     },
