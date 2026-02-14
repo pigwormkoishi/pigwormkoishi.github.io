@@ -916,7 +916,7 @@
     </span>
     
 </h4>
-<p>为保证搜索功能正常运行，单语言时直接命名 <code>languages.toml</code>，不加语言后缀（如 <code>zh-cn.toml</code>），且必须在 <code>config/_default/languages.toml</code> 中明确输出格式：</p>
+<p>为保证搜索功能正常运行，单语言时直接命名 <code>languages.toml</code>，不加语言后缀（如 <code>zh-cn.toml</code>），且必须在 <code>config/_default/languages.toml</code> 中明确输出格式。且languages.toml需加入以下代码：</p>
 <div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">outputs</span><span class="p">]</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">,</span> <span class="s2">&#34;JSON&#34;</span><span class="p">]</span></span></span></code></pre></div></div>
 
