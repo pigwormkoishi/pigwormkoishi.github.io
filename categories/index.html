@@ -585,6 +585,19 @@
 
       </main><style type="text/css">
      
+    #footer-copyright {
+        position: fixed;
+        left: 20px;
+        bottom: 15px;
+        z-index: 9998;  
+        color: rgba(136, 136, 136, 0.8);  
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        letter-spacing: 0.5px;
+        pointer-events: none;  
+    }
+
+     
     #waifu {
         right: 20px !important;
         bottom: 0px !important;
@@ -609,6 +622,14 @@
 
      
     @media (max-width: 768px) {
+         
+        #footer-copyright {
+            left: 10px;
+            bottom: 10px;
+            font-size: 11px;
+            opacity: 0.6;
+        }
+
          
         html, body, a, button {
             cursor: auto !important;
@@ -638,6 +659,8 @@
     }
 </style>
 
+<div id="footer-copyright">@2026 PigWorm</div>
+
 <div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: auto;"></div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -654,7 +677,7 @@
                 "opacity": { "value": 0.5 },
                 "size": { "value": 2 },
                 "line_linked": { 
-                    "enable": false  
+                    "enable": false 
                 },
                 "move": { 
                     "enable": true, 
@@ -665,7 +688,6 @@
             "interactivity": {
                 "detect_on": "window",
                 "events": {
-                     
                     "onhover": { 
                         "enable": !isMobile, 
                         "mode": "grab" 
