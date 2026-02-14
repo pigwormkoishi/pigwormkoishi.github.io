@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "36"
+    "wordCount": "50"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>36 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>50 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
     
 
     
@@ -815,10 +815,10 @@
   <ul>
     <li><a href="#-关于个人网站">🏗️ 关于个人网站</a>
       <ul>
-        <li><a href="#交互体验看板娘与粒子">交互体验：看板娘与粒子</a></li>
-        <li><a href="#解决配置报错">解决配置报错</a>
+        <li><a href="#0x01-交互体验看板娘与粒子">0x01 交互体验：看板娘与粒子</a></li>
+        <li><a href="#0x02-解决配置报错">0x02 解决配置报错</a>
           <ul>
-            <li><a href="#注意">注意</a></li>
+            <li><a href="#-关键配置提醒">💡 关键配置提醒</a></li>
           </ul>
         </li>
       </ul>
@@ -838,10 +838,10 @@
   <ul>
     <li><a href="#-关于个人网站">🏗️ 关于个人网站</a>
       <ul>
-        <li><a href="#交互体验看板娘与粒子">交互体验：看板娘与粒子</a></li>
-        <li><a href="#解决配置报错">解决配置报错</a>
+        <li><a href="#0x01-交互体验看板娘与粒子">0x01 交互体验：看板娘与粒子</a></li>
+        <li><a href="#0x02-解决配置报错">0x02 解决配置报错</a>
           <ul>
-            <li><a href="#注意">注意</a></li>
+            <li><a href="#-关键配置提醒">💡 关键配置提醒</a></li>
           </ul>
         </li>
       </ul>
@@ -874,47 +874,51 @@
 </h2>
 <p>欢迎来到我的个人网站。这个站点基于 <strong>Hugo</strong> 配合 <strong>Blowfish</strong> 主题构建。为了让它更有“生命力”，我进行了一些深度定制。</p>
 
-<h3 class="relative group">交互体验：看板娘与粒子
-    <div id="交互体验看板娘与粒子" class="anchor"></div>
+<h3 class="relative group">0x01 交互体验：看板娘与粒子
+    <div id="0x01-交互体验看板娘与粒子" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e4%ba%a4%e4%ba%92%e4%bd%93%e9%aa%8c%e7%9c%8b%e6%9d%bf%e5%a8%98%e4%b8%8e%e7%b2%92%e5%ad%90" aria-label="锚点">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#0x01-%e4%ba%a4%e4%ba%92%e4%bd%93%e9%aa%8c%e7%9c%8b%e6%9d%bf%e5%a8%98%e4%b8%8e%e7%b2%92%e5%ad%90" aria-label="锚点">#</a>
     </span>
     
 </h3>
 <ul>
-<li><strong>Live2D 看板娘</strong>
-引入了交互式 Live2D 模块。针对移动端，隐藏了<strong>对话框</strong>和<strong>工具栏</strong>，确保不会遮挡正文阅读，并防止移动端与PC端键位冲突（如工具栏<strong>游戏</strong>通过<code>ESC键</code>退出，移动端不可逆）。</li>
-<li><strong>Particles.js 粒子背景</strong>
-在桌面端开启了 <code>grab</code>（抓取连线）模式。
+<li>
+<p><strong>Live2D 看板娘</strong>
+引入了交互式 Live2D 模块。</p>
+<blockquote><p><strong>注意：</strong> 针对移动端，隐藏了<strong>对话框</strong>和<strong>工具栏</strong>，确保不会遮挡正文阅读，并防止移动端与 PC 端键位冲突（如工具栏<strong>游戏</strong>通过 <code>ESC 键</code> 退出，移动端不可逆）。</p>
+</blockquote></li>
+<li>
+<p><strong>Particles.js 粒子背景</strong>
+在桌面端开启了 <code>grab</code>（抓取连线）模式。</p>
 <blockquote><p><strong>注意：</strong> 在移动端，我彻底禁用了 <code>pointer-events</code>，不仅是为了省电，更是为了防止滑动页面时产生多余的干扰线条。</p>
 </blockquote></li>
 </ul>
 
-<h3 class="relative group">解决配置报错
-    <div id="解决配置报错" class="anchor"></div>
+<h3 class="relative group">0x02 解决配置报错
+    <div id="0x02-解决配置报错" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%a7%a3%e5%86%b3%e9%85%8d%e7%bd%ae%e6%8a%a5%e9%94%99" aria-label="锚点">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#0x02-%e8%a7%a3%e5%86%b3%e9%85%8d%e7%bd%ae%e6%8a%a5%e9%94%99" aria-label="锚点">#</a>
     </span>
     
 </h3>
 <p>在搭建过程中，修复了 <code>languages.toml</code> 的层级逻辑。</p>
 
-<h4 class="relative group">注意
-    <div id="注意" class="anchor"></div>
+<h4 class="relative group">💡 关键配置提醒
+    <div id="-关键配置提醒" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e6%b3%a8%e6%84%8f" aria-label="锚点">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#-%e5%85%b3%e9%94%ae%e9%85%8d%e7%bd%ae%e6%8f%90%e9%86%92" aria-label="锚点">#</a>
     </span>
     
 </h4>
-<p>为保证搜索功能正常运行，单语言时直接命名languages.toml，不加语言后缀（zh-cn），且必须在<code>config/_default/languages.toml</code>中添加以下代码：</p>
+<p>为保证搜索功能正常运行，单语言时直接命名 <code>languages.toml</code>，不加语言后缀（如 <code>zh-cn.toml</code>），且必须在 <code>config/_default/languages.toml</code> 中明确输出格式：</p>
 <div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="p">[</span><span class="nx">zh-cn</span><span class="p">.</span><span class="nx">outputs</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">,</span> <span class="s2">&#34;JSON&#34;</span><span class="p">]</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl">  <span class="nx">home</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;HTML&#34;</span><span class="p">,</span> <span class="s2">&#34;RSS&#34;</span><span class="p">,</span> <span class="s2">&#34;JSON&#34;</span><span class="p">]</span></span></span></code></pre></div></div>
 
           
           
