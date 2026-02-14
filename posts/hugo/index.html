@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1035"
+    "wordCount": "1183"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1035 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1183 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
     
 
     
@@ -837,6 +837,12 @@
             <li><a href="#2-版权栏优化">2. 版权栏优化</a></li>
           </ul>
         </li>
+        <li><a href="#解决-hugo-中文字数统计失效">解决 Hugo 中文字数统计失效</a>
+          <ul>
+            <li><a href="#-问题排查">🔍 问题排查</a></li>
+            <li><a href="#-修复方案">💡 修复方案</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -874,6 +880,12 @@
           <ul>
             <li><a href="#1-鼠标点击涟漪反馈">1. 鼠标点击“涟漪”反馈</a></li>
             <li><a href="#2-版权栏优化">2. 版权栏优化</a></li>
+          </ul>
+        </li>
+        <li><a href="#解决-hugo-中文字数统计失效">解决 Hugo 中文字数统计失效</a>
+          <ul>
+            <li><a href="#-问题排查">🔍 问题排查</a></li>
+            <li><a href="#-修复方案">💡 修复方案</a></li>
           </ul>
         </li>
       </ul>
@@ -1034,6 +1046,41 @@
 <li><strong>悬停 (Hover)：</strong> 鼠标移入时，<code>.footer-line</code> 的左侧边框显现并伸长，文字向右偏移 <code>15px</code>，同时伴随微弱的白光阴影（<code>text-shadow</code>）。</li>
 <li><strong>退出 (Exit/Reset)：</strong> 鼠标移开时，利用 <code>transition: all 0.5s ease</code> 实现平滑回弹。所有状态变更（边框、间距、颜色）都会在 0.5 秒内优雅地回归原位，避免了视觉上的闪现感。</li>
 </ul>
+
+<h3 class="relative group">解决 Hugo 中文字数统计失效
+    <div id="解决-hugo-中文字数统计失效" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e8%a7%a3%e5%86%b3-hugo-%e4%b8%ad%e6%96%87%e5%ad%97%e6%95%b0%e7%bb%9f%e8%ae%a1%e5%a4%b1%e6%95%88" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p>在配置 <strong>Blowfish</strong> 主题时，发现文章详情页的“阅读时间”和“字数统计”对中文支持极差。</p>
+
+<h4 class="relative group">🔍 问题排查
+    <div id="-问题排查" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#-%e9%97%ae%e9%a2%98%e6%8e%92%e6%9f%a5" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>Hugo 默认的分词逻辑基于空格（Space-delimited），这导致连续的汉字块被识别为单个单词。</p>
+
+<h4 class="relative group">💡 修复方案
+    <div id="-修复方案" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#-%e4%bf%ae%e5%a4%8d%e6%96%b9%e6%a1%88" aria-label="锚点">#</a>
+    </span>
+    
+</h4>
+<p>在 <code>config/_default/hugo.toml</code> 中开启 CJK 语言支持：</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 开启东亚语言分词支持，解决中文字数统计为 1 的问题</span>
+</span></span><span class="line"><span class="cl"><span class="nx">hasCJKLanguage</span> <span class="p">=</span> <span class="kc">true</span></span></span></code></pre></div></div>
 
           
           
