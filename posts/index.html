@@ -116,8 +116,8 @@
   <link
     type="text/css"
     rel="stylesheet"
-    href="/css/main.bundle.min.f3ba2b4e9263b1dd20cfcf6fee97bb5cd7f04995c67653f770a9d0fcf36d2ac2396def11ae2617b691eb6f92c6dec36b2fb0f25e2ad48f418c92e15ff26b536d.css"
-    integrity="sha512-87orTpJjsd0gz89v7pe7XNfwSZXGdlP3cKnQ/PNtKsI5be8RriYXtpHrb5LG3sNrL7DyXirUj0GMkuFf8mtTbQ==">
+    href="/css/main.bundle.min.5619264c58c8a7a54fa35805dc68d347e8fe5b42b89c9e7c9af69b89594e4e0bcc89f3c86427216982599924b974087f332f6418532b2eac7110819386dae273.css"
+    integrity="sha512-VhkmTFjIp6VPo1gF3GjTR&#43;j&#43;W0K4nJ58mvabiVlOTgvMifPIZCchaYJZmSS5dAh/My9kGFMrLqxxEIGThtricw==">
 
   
   
@@ -894,37 +894,74 @@
   </a>
 </div>
 
-      </main><footer id="site-footer" class="py-10 print:hidden">
-  
-  
-    
-  
-  <div class="flex items-center justify-between">
-    
-    
-      <p class="text-sm text-neutral-500 dark:text-neutral-400">
-          &copy;
-          2026
-          PigWorm
-      </p>
-    
+      </main><script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@3.1.4/lib/L2Dwidget.min.js"></script>
 
-    
-    
-  </div>
+<script>
   
-    <script>
-      mediumZoom(document.querySelectorAll("img:not(.nozoom)"), {
-        margin: 24,
-        background: "rgba(0,0,0,0.5)",
-        scrollOffset: 0,
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('particles-js');
+    if (container) {
+      particlesJS('particles-js', {
+        "particles": {
+          "number": { 
+            "value": 60, 
+            "density": { "enable": true, "value_area": 800 } 
+          },
+          "color": { "value": "#ffffff" },
+          "shape": { "type": "circle" },
+          "opacity": {
+            "value": 0.6, 
+            "random": true,
+            "anim": { "enable": true, "speed": 2, "opacity_min": 0.2, "sync": false } 
+          },
+          "size": { 
+            "value": 3.5, 
+            "random": true 
+          },
+          "line_linked": { "enable": false }, 
+          "move": {
+            "enable": true,
+            "speed": 1.2, 
+            "direction": "top",
+            "random": true,
+            "out_mode": "out"
+          }
+        },
+        "interactivity": {
+          "events": { 
+            "onhover": { "enable": true, "mode": "bubble" }, 
+            "onclick": { "enable": true, "mode": "push" }   
+          },
+          "modes": { 
+            "bubble": { "distance": 150, "size": 8, "duration": 0.3, "opacity": 1 },
+            "push": { "particles_nb": 4 }
+          }
+        }
       });
-    </script>
+    }
+  });
+
   
-  
-  
-</footer>
-<div
+  L2Dwidget.init({
+    "model": {
+      "jsonPath": "https://cdn.jsdelivr.net/npm/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json",
+      "scale": 1.1 
+    },
+    "display": {
+      "position": "right",
+      "width": 160,
+      "height": 320,
+      "hOffset": 20,
+      "vOffset": 0
+    },
+    "mobile": { "show": false },
+    "react": { 
+      "opacityDefault": 0.9, 
+      "opacityOnHover": 1 
+    }
+  });
+</script><div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
   data-url="https://pigwormkoishi.github.io/">
