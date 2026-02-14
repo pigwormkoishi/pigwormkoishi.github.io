@@ -584,7 +584,7 @@
 </div>
 
       </main><style type="text/css">
-     
+        
     #waifu {
         right: 20px !important;
         bottom: 0px !important;
@@ -610,6 +610,11 @@
      
     @media (max-width: 768px) {
          
+        html, body, a, button {
+            cursor: auto !important;
+        }
+
+         
         #waifu {
             transform: scale(0.5) !important; 
             transform-origin: right bottom !important; 
@@ -628,7 +633,7 @@
     }
 </style>
 
-<div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;"></div>
+<div id="particles-js" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: auto;"></div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 <script type="text/javascript">
@@ -636,15 +641,43 @@
     if (window.particlesJS) {
         particlesJS('particles-js', {
             "particles": {
-                "number": { "value": 40 },
+                "number": { "value": 60 },
                 "color": { "value": "#888888" },
                 "shape": { "type": "circle" },
                 "opacity": { "value": 0.5 },
                 "size": { "value": 2 },
-                "line_linked": { "enable": false },
-                "move": { "enable": true, "speed": 1, "out_mode": "out" }
+                "line_linked": { 
+                    "enable": false  
+                },
+                "move": { 
+                    "enable": true, 
+                    "speed": 1.2, 
+                    "out_mode": "out" 
+                }
             },
-            "interactivity": { "events": { "onhover": { "enable": false } } },
+            "interactivity": {
+                "detect_on": "window",
+                "events": {
+                    "onhover": { 
+                        "enable": true, 
+                        "mode": "grab"  
+                    },
+                    "onclick": { 
+                        "enable": true, 
+                        "mode": "push" 
+                    }
+                },
+                "modes": {
+                    "grab": { 
+                        "distance": 200, 
+                        "line_linked": { 
+                            "enable": true,  
+                            "opacity": 0.5 
+                        } 
+                    },
+                    "push": { "particles_nb": 4 }
+                }
+            },
             "retina_detect": true
         });
     }
