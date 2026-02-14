@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1126"
+    "wordCount": "1115"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1126 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1115 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
     
 
     
@@ -1046,7 +1046,7 @@
     </span>
     
 </h3>
-<p>在配置 <strong>Blowfish</strong> 主题时，发现文章详情页的“阅读时间”和“字数统计”对中文支持极差。</p>
+<p>在配置 <strong>Blowfish</strong> 主题时，发现文章数据“字数”对中文支持极差。</p>
 
 <h4 class="relative group">修复方案
     <div id="修复方案" class="anchor"></div>
@@ -1058,7 +1058,7 @@
     
 </h4>
 <p>在 <code>config/_default/hugo.toml</code> 中开启 CJK 语言支持：</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 开启东亚语言分词支持，解决中文字数统计为 1 的问题</span>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 开启东亚语言分词支持，解决中文字数统计错误的问题</span>
 </span></span><span class="line"><span class="cl"><span class="nx">hasCJKLanguage</span> <span class="p">=</span> <span class="kc">true</span></span></span></code></pre></div></div>
 
           
