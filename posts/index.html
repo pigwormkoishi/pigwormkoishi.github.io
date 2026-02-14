@@ -901,28 +901,28 @@
   
   document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('particles-js');
+    const isMobile = window.innerWidth < 768; 
+    const particleCount = isMobile ? 25 : 60; 
+
     if (container) {
       particlesJS('particles-js', {
         "particles": {
           "number": { 
-            "value": 60, 
+            "value": particleCount, 
             "density": { "enable": true, "value_area": 800 } 
           },
           "color": { "value": "#ffffff" },
           "shape": { "type": "circle" },
           "opacity": {
-            "value": 0.6, 
+            "value": 0.6,
             "random": true,
-            "anim": { "enable": true, "speed": 2, "opacity_min": 0.2, "sync": false } 
+            "anim": { "enable": true, "speed": 2, "opacity_min": 0.2, "sync": false }
           },
-          "size": { 
-            "value": 3.5, 
-            "random": true 
-          },
+          "size": { "value": 3.5, "random": true },
           "line_linked": { "enable": false }, 
           "move": {
             "enable": true,
-            "speed": 1.2, 
+            "speed": 1.2,
             "direction": "top",
             "random": true,
             "out_mode": "out"
@@ -930,7 +930,7 @@
         },
         "interactivity": {
           "events": { 
-            "onhover": { "enable": true, "mode": "bubble" }, 
+            "onhover": { "enable": !isMobile, "mode": "bubble" }, 
             "onclick": { "enable": true, "mode": "push" }   
           },
           "modes": { 
@@ -955,9 +955,12 @@
       "hOffset": 20,
       "vOffset": 0
     },
-    "mobile": { "show": false },
+    "mobile": { 
+      "show": true,       
+      "scale": 0.4        
+    },
     "react": { 
-      "opacityDefault": 0.9, 
+      "opacityDefault": 0.7, 
       "opacityOnHover": 1 
     }
   });
