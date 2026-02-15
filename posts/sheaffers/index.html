@@ -953,9 +953,8 @@
         line-height: 1.8; 
         text-align: left;
         position: relative;
-         
         z-index: 9999; 
-        pointer-events: auto;  
+        pointer-events: auto;
         animation: footerEntrance 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
     .footer-line { border-left: 2px solid rgba(136, 136, 136, 0); padding-left: 0; transition: all 0.5s ease; cursor: default; }
@@ -968,21 +967,21 @@
     @keyframes footerEntrance { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
      
-    #particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9998; pointer-events: auto; }
+    #particles-js { 
+        position: fixed; 
+        top: 0; left: 0; width: 100%; height: 100%; 
+        z-index: -1;  
+        pointer-events: none;  
+    }
 
      
-     
     html body #waifu { 
-        right: 25px !important; 
         left: auto !important; 
-        bottom: -5px !important; 
         position: fixed !important; 
-         
         z-index: 10000 !important; 
         line-height: 0;
         opacity: 0; 
-        transform-origin: bottom right !important; 
-        transition: opacity 1.2s ease, transform 0.5s ease !important;
+        transition: opacity 1.2s ease !important;
     }
     #waifu.waifu-active { opacity: 1 !important; }
     
@@ -993,22 +992,6 @@
         color: #ffffff !important; font-weight: 600 !important;
         border: 1px solid rgba(255, 255, 255, 0.2) !important;
         border-radius: 12px !important;
-    }
-
-     
-    body.is-mobile-device #waifu {
-        transform: scale(0.5) !important; 
-        right: 5px !important;   
-        bottom: -20px !important; 
-    }
-    
-     
-    body.is-mobile-device #waifu-tips,
-    body.is-mobile-device #waifu-tool {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-        pointer-events: none !important;
     }
 </style>
 
@@ -1027,10 +1010,7 @@
 <script type="text/javascript">
     (function() {
         
-        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || (window.innerWidth < 768);
-        if (isMobile) {
-            document.body.classList.add('is-mobile-device');
-        }
+        var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768 || screen.width < 768;
 
          
         if (window.particlesJS) {
@@ -1045,7 +1025,7 @@
                     "move": { "enable": true, "speed": 0.8, "direction": "none", "random": true, "out_mode": "out" }
                 },
                 "interactivity": {
-                    "detect_on": "window",
+                    "detect_on": "window", 
                     "events": {
                         "onhover": { "enable": !isMobile, "mode": "bubble" }, 
                         "onclick": { "enable": true, "mode": "repulse" } 
@@ -1080,16 +1060,44 @@
                 cdnPath: "https://live2d.fghrsh.net/api/",
                 modelId: 1, 
                 modelTexturesId: 1,
+                
                 showToolMenu: !isMobile,
                 showWelcomeMessage: !isMobile,
                 showHitokoto: !isMobile
             });
             
             
-            setTimeout(function() {
-                var w = document.getElementById('waifu');
-                if (w) w.classList.add('waifu-active');
-            }, 800);
+            var fixLive2D = setInterval(function() {
+                var waifu = document.getElementById('waifu');
+                var tips = document.getElementById('waifu-tips');
+                var tool = document.getElementById('waifu-tool');
+
+                if (waifu) {
+                    waifu.classList.add('waifu-active');
+                    
+                    if (isMobile) {
+                        
+                        waifu.style.setProperty('transform', 'scale(0.5)', 'important');
+                        waifu.style.setProperty('transform-origin', 'bottom right', 'important');
+                        waifu.style.setProperty('right', '0px', 'important');
+                        waifu.style.setProperty('bottom', '-20px', 'important');
+                        
+                        
+                        if (tips) tips.remove();
+                        if (tool) tool.remove();
+                    } else {
+                        
+                        waifu.style.setProperty('right', '25px', 'important');
+                        waifu.style.setProperty('bottom', '-5px', 'important');
+                        clearInterval(fixLive2D); 
+                    }
+                }
+            }, 500); 
+
+            
+            if (isMobile) {
+                setTimeout(function() { clearInterval(fixLive2D); }, 5000);
+            }
         });
     })();
 </script><div
