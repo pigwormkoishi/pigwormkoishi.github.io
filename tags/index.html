@@ -664,6 +664,8 @@
         animation: footerEntrance 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     }
     .footer-line { border-left: 2px solid rgba(136, 136, 136, 0); padding-left: 0; transition: all 0.5s ease; cursor: default; }
+    
+     
     #footer-copyright:hover .footer-line { 
         border-left: 2px solid #98FB98;
         padding-left: 15px; 
@@ -674,10 +676,9 @@
 
      
     #particles-js { 
-        position: fixed; 
-        top: 0; left: 0; width: 100%; height: 100%; 
-        z-index: -1;  
-        pointer-events: none;  
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+        z-index: -1; 
+        pointer-events: none; 
     }
 
      
@@ -691,6 +692,7 @@
     }
     #waifu.waifu-active { opacity: 1 !important; }
     
+     
     #waifu-tips {
         background: rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(10px) !important;
@@ -718,26 +720,34 @@
         
         var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768 || screen.width < 768;
 
-         
+        
+
         if (window.particlesJS) {
             particlesJS('particles-js', {
                 "particles": {
+                    
                     "number": { "value": isMobile ? 80 : 300, "density": { "enable": true, "value_area": 800 } },
+                    
                     "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
                     "shape": { "type": "circle" },
+                    
                     "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
+                    
                     "size": { "value": 2.2, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.5 } },
-                    "line_linked": { "enable": false },
+                    "line_linked": { "enable": false }, 
                     "move": { "enable": true, "speed": 0.8, "direction": "none", "random": true, "out_mode": "out" }
                 },
                 "interactivity": {
+                    
                     "detect_on": "window", 
                     "events": {
                         "onhover": { "enable": !isMobile, "mode": "bubble" }, 
-                        "onclick": { "enable": true, "mode": "repulse" } 
+                        "onclick": { "enable": true, "mode": "repulse" }      
                     },
                     "modes": {
+                        
                         "bubble": { "distance": 150, "size": 2.3, "duration": 0.3, "opacity": 1 },
+                        
                         "repulse": { "distance": 300, "duration": 0.4 } 
                     }
                 },
@@ -745,7 +755,8 @@
             });
         }
 
-         
+        
+
         var cdnBase = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
         function loadRes(url, type) {
             return new Promise(function(resolve) {
@@ -755,6 +766,8 @@
                 document.head.appendChild(tag);
             });
         }
+
+        
 
         Promise.all([
             loadRes(cdnBase + "waifu.css", "css"),
@@ -782,17 +795,17 @@
                     waifu.classList.add('waifu-active');
                     
                     if (isMobile) {
-                        
+                         
                         waifu.style.setProperty('transform', 'scale(0.5)', 'important');
                         waifu.style.setProperty('transform-origin', 'bottom right', 'important');
                         waifu.style.setProperty('right', '0px', 'important');
                         waifu.style.setProperty('bottom', '-20px', 'important');
                         
-                        
+                         
                         if (tips) tips.remove();
                         if (tool) tool.remove();
                     } else {
-                        
+                         
                         waifu.style.setProperty('right', '25px', 'important');
                         waifu.style.setProperty('bottom', '-5px', 'important');
                         clearInterval(fixLive2D); 
