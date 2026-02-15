@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1410"
+    "wordCount": "1393"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1410 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1393 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
     
 
     
@@ -838,6 +838,7 @@
             <li><a href="#修复方案">修复方案</a></li>
           </ul>
         </li>
+        <li><a href="#footerhtml大改及改动后debug">footer.html大改及改动后debug</a></li>
       </ul>
     </li>
   </ul>
@@ -878,6 +879,7 @@
             <li><a href="#修复方案">修复方案</a></li>
           </ul>
         </li>
+        <li><a href="#footerhtml大改及改动后debug">footer.html大改及改动后debug</a></li>
       </ul>
     </li>
   </ul>
@@ -1057,32 +1059,37 @@
 </h4>
 <p>在 <code>config/_default/hugo.toml</code> 中开启 CJK 语言支持：</p>
 <div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># 开启东亚语言分词支持，解决中文字数统计错误的问题</span>
-</span></span><span class="line"><span class="cl"><span class="nx">hasCJKLanguage</span> <span class="p">=</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c">### footer.html大改及改动后debug</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">**问题表现：**</span>
-</span></span><span class="line"><span class="cl"><span class="nx">PC</span> <span class="err">端文章内的链接、主题按钮均无法点击，且页面底部的版权悬停（</span><span class="nx">Hover</span><span class="err">）动效失效。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">**原因分析：**</span>
-</span></span><span class="line"><span class="cl"><span class="err">为实现鼠标点击时产生排斥（</span><span class="nx">repulse</span><span class="err">）的粒子效果，此前将</span> <span class="err">`</span><span class="c">#particles-js` 容器的 `z-index` 设为了 `9998` 并开启了 `pointer-events: auto`。该设定导致粒子图层覆盖了整个页面，下层 DOM 无法接收鼠标事件。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">**解决方案：**</span>
-</span></span><span class="line"><span class="cl"><span class="err">降低粒子图层层级至页面最底层，放行鼠标事件，并修改粒子脚本的事件监听目标对象。</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="mi">1</span><span class="p">.</span> <span class="err">**</span><span class="nx">CSS</span> <span class="err">调整**：将交互权交还网页。</span>
-</span></span><span class="line"><span class="cl"><span class="err">```</span><span class="nx">css</span>
-</span></span><span class="line"><span class="cl"><span class="err">/*</span> <span class="err">粒子层退居底层，放行鼠标事件</span> <span class="err">*/</span>
-</span></span><span class="line"><span class="cl"><span class="c">#particles-js { </span>
-</span></span><span class="line"><span class="cl">    <span class="nx">position</span><span class="err">:</span> <span class="nx">fixed</span><span class="err">;</span> <span class="nx">top</span><span class="err">:</span> <span class="mi">0</span><span class="err">;</span> <span class="nx">left</span><span class="err">:</span> <span class="mi">0</span><span class="err">;</span> <span class="nx">width</span><span class="err">:</span> <span class="mi">100</span><span class="err">%;</span> <span class="nx">height</span><span class="err">:</span> <span class="mi">100</span><span class="err">%;</span> 
-</span></span><span class="line"><span class="cl">    <span class="nx">z-index</span><span class="err">:</span> <span class="mi">-1</span><span class="err">;</span> 
-</span></span><span class="line"><span class="cl">    <span class="nx">pointer-events</span><span class="err">:</span> <span class="nx">none</span><span class="err">;</span> 
+</span></span><span class="line"><span class="cl"><span class="nx">hasCJKLanguage</span> <span class="p">=</span> <span class="kc">true</span></span></span></code></pre></div></div>
+
+<h3 class="relative group">footer.html大改及改动后debug
+    <div id="footerhtml大改及改动后debug" class="anchor"></div>
+    
+    <span
+        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#footerhtml%e5%a4%a7%e6%94%b9%e5%8f%8a%e6%94%b9%e5%8a%a8%e5%90%8edebug" aria-label="锚点">#</a>
+    </span>
+    
+</h3>
+<p><strong>问题表现：</strong>
+PC 端文章内的链接、主题按钮均无法点击，且页面底部的版权悬停（Hover）动效失效。</p>
+<p><strong>原因分析：</strong>
+为实现鼠标点击时产生排斥（repulse）的粒子效果，此前将 <code>#particles-js</code> 容器的 <code>z-index</code> 设为了 <code>9998</code> 并开启了 <code>pointer-events: auto</code>。该设定导致粒子图层覆盖了整个页面，下层 DOM 无法接收鼠标事件。</p>
+<p><strong>解决方案：</strong>
+降低粒子图层层级至页面最底层，放行鼠标事件，并修改粒子脚本的事件监听目标对象。</p>
+<ol>
+<li><strong>CSS 调整</strong>：将交互权交还网页。</li>
+</ol>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 粒子层退居底层，放行鼠标事件 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">particles-js</span> <span class="p">{</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">position</span><span class="p">:</span> <span class="kc">fixed</span><span class="p">;</span> <span class="k">top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="k">left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span> <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">z-index</span><span class="p">:</span> <span class="mi">-1</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">pointer-events</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span> 
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="err">/*</span> <span class="err">提高版权栏层级，确保</span> <span class="nx">hover</span> <span class="err">动效可被触发</span> <span class="err">*/</span>
-</span></span><span class="line"><span class="cl"><span class="c">#footer-copyright {</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">z-index</span><span class="err">:</span> <span class="mi">9999</span><span class="err">;</span> 
-</span></span><span class="line"><span class="cl">    <span class="nx">pointer-events</span><span class="err">:</span> <span class="nx">auto</span><span class="err">;</span>
+</span></span><span class="line"><span class="cl"><span class="c">/* 提高版权栏层级，确保 hover 动效可被触发 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">#</span><span class="nn">footer-copyright</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">z-index</span><span class="p">:</span> <span class="mi">9999</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="n">pointer-events</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
 
           
