@@ -950,10 +950,8 @@
         transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1); 
     }
     #footer-copyright:hover .footer-line { 
-        border-left: 2px solid rgba(136, 136, 136, 0.5); 
-        padding-left: 15px; 
-        color: rgba(136, 136, 136, 0.9); 
-        text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
+        border-left: 2px solid rgba(136, 136, 136, 0.5); padding-left: 15px; 
+        color: rgba(136, 136, 136, 0.9); text-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
     }
     @keyframes footerEntrance { 
         from { opacity: 0; transform: translateY(30px) translateZ(0); } 
@@ -988,30 +986,22 @@
      
     @media (max-width: 768px) {
          
-        #footer-copyright { 
-            padding: 80px 20px 10px 20px !important; 
-            font-size: 11px; 
+        html body #waifu { 
+            display: block !important;  
+            transform: scale(0.55) translateZ(0) !important;  
+            transform-origin: right bottom !important; 
+            right: -10px !important; 
+            bottom: -5px !important; 
+            pointer-events: none !important;  
         }
         
-         
-        html body #waifu { 
-             
-            transform: scale(0.6) translateZ(0) !important; 
-             
-            transform-origin: right bottom !important; 
-            right: 5px !important; 
-            bottom: -5px !important; 
-             
-            pointer-events: none !important; 
-        }
-
+        #footer-copyright { padding: 80px 20px 10px 20px !important; font-size: 11px; }
+        
          
         #waifu-tips, #waifu-tool { display: none !important; }
         #particles-js { opacity: 0.3; pointer-events: none !important; }
     }
 </style>
-
-
 
 <div id="footer-copyright">
     <div class="footer-line">
@@ -1060,6 +1050,7 @@
         });
     }
 
+    
     const cdnBase = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
     function loadExternalResource(url, type) {
         return new Promise((resolve, reject) => {
@@ -1072,20 +1063,19 @@
         });
     }
 
-    if (window.innerWidth >= 480) {
-        Promise.all([
-            loadExternalResource(cdnBase + "waifu.css", "css"),
-            loadExternalResource(cdnBase + "live2d.min.js", "js"),
-            loadExternalResource(cdnBase + "waifu-tips.js", "js")
-        ]).then(() => {
-            initWidget({
-                waifuPath: cdnBase + "waifu-tips.json",
-                cdnPath: "https://live2d.fghrsh.net/api/",
-                tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
-            });
-            setTimeout(() => { document.getElementById('waifu')?.classList.add('waifu-active'); }, 1000);
+    
+    Promise.all([
+        loadExternalResource(cdnBase + "waifu.css", "css"),
+        loadExternalResource(cdnBase + "live2d.min.js", "js"),
+        loadExternalResource(cdnBase + "waifu-tips.js", "js")
+    ]).then(() => {
+        initWidget({
+            waifuPath: cdnBase + "waifu-tips.json",
+            cdnPath: "https://live2d.fghrsh.net/api/",
+            tools: ["hitokoto", "asteroids", "switch-model", "switch-texture", "photo", "info", "quit"]
         });
-    }
+        setTimeout(() => { document.getElementById('waifu')?.classList.add('waifu-active'); }, 1000);
+    });
 </script><div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
