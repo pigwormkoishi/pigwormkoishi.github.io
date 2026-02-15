@@ -244,7 +244,7 @@
     "keywords": ["Hugo","网站设计","前端"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "1115"
+    "wordCount": "1094"
   }]
   </script>
 
@@ -665,7 +665,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1115 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
+      <time datetime="2026-02-14T00:00:00&#43;00:00">February 14, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1094 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
     
 
     
@@ -819,7 +819,7 @@
           <ul>
             <li><a href="#live2d-看板娘">Live2D 看板娘</a></li>
             <li><a href="#particlesjs-粒子背景">Particles.js 粒子背景</a></li>
-            <li><a href="#移动端界面优化">移动端界面优化</a></li>
+            <li><a href="#界面优化">界面优化</a></li>
           </ul>
         </li>
         <li><a href="#解决配置报错">解决配置报错</a>
@@ -859,7 +859,7 @@
           <ul>
             <li><a href="#live2d-看板娘">Live2D 看板娘</a></li>
             <li><a href="#particlesjs-粒子背景">Particles.js 粒子背景</a></li>
-            <li><a href="#移动端界面优化">移动端界面优化</a></li>
+            <li><a href="#界面优化">界面优化</a></li>
           </ul>
         </li>
         <li><a href="#解决配置报错">解决配置报错</a>
@@ -942,12 +942,12 @@
 <p>在桌面端开启了 <code>grab</code>（抓取连线）模式。</p>
 <blockquote><p><strong>注意：</strong> 在移动端彻底禁用了 <code>pointer-events</code>，不仅是为了省电，更是为了防止滑动页面时产生多余的干扰线条。</p>
 </blockquote>
-<h4 class="relative group">移动端界面优化
-    <div id="移动端界面优化" class="anchor"></div>
+<h4 class="relative group">界面优化
+    <div id="界面优化" class="anchor"></div>
     
     <span
         class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%a7%bb%e5%8a%a8%e7%ab%af%e7%95%8c%e9%9d%a2%e4%bc%98%e5%8c%96" aria-label="锚点">#</a>
+        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#%e7%95%8c%e9%9d%a2%e4%bc%98%e5%8c%96" aria-label="锚点">#</a>
     </span>
     
 </h4>
@@ -960,14 +960,12 @@
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
 <p>修复置顶键和看板娘位置冲突，将置顶键移到了左下角，<code>D:\hugo\dev\assets\css\custom.css</code>中添加：</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 强制将“回到顶部”按钮移至左下角，仅在移动端冲突时建议开启 */</span>
-</span></span><span class="line"><span class="cl"><span class="p">@</span><span class="k">media</span> <span class="o">(</span><span class="nt">max-width</span><span class="o">:</span> <span class="nt">768px</span><span class="o">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="p">.</span><span class="nc">scroll-to-top</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">right</span><span class="p">:</span> <span class="kc">auto</span> <span class="cp">!important</span><span class="p">;</span>   <span class="c">/* 清除默认的右侧定位 */</span>
-</span></span><span class="line"><span class="cl">        <span class="k">left</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span>    <span class="c">/* 靠左 20px */</span>
-</span></span><span class="line"><span class="cl">        <span class="k">bottom</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span>  <span class="c">/* 距离底部 20px */</span>
-</span></span><span class="line"><span class="cl">        <span class="k">z-index</span><span class="p">:</span> <span class="mi">50</span><span class="p">;</span>              <span class="c">/* 确保在粒子背景之上 */</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 强制将“回到顶部”按钮移至左下角 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">scroll-to-top</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">right</span><span class="p">:</span> <span class="kc">auto</span> <span class="cp">!important</span><span class="p">;</span>   <span class="c">/* 清除默认的右侧定位 */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">left</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span>    <span class="c">/* 靠左 20px */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">bottom</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span> <span class="cp">!important</span><span class="p">;</span>  <span class="c">/* 距离底部 20px */</span>
+</span></span><span class="line"><span class="cl">    <span class="k">z-index</span><span class="p">:</span> <span class="mi">50</span><span class="p">;</span>              <span class="c">/* 确保在粒子背景之上 */</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
 
 <h3 class="relative group">解决配置报错
