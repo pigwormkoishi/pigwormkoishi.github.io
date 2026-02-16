@@ -988,6 +988,10 @@
 
          
         localStorage.removeItem('waifu-display'); 
+        
+         
+        localStorage.setItem('modelId', '1');       
+        localStorage.setItem('modelTexturesId', '28'); 
 
          
         if (!isMobile) {
@@ -1015,11 +1019,9 @@
                 },
                 "interactivity": {
                     "detect_on": "window", 
-                     
                     "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
                     "modes": {
                         "bubble": { "distance": 200, "size": 2.3, "duration": 0.3, "opacity": 1 },
-                         
                         "repulse": { "distance": 150, "duration": 0.4 }
                     }
                 },
@@ -1039,7 +1041,6 @@
                 },
                 "interactivity": { 
                     "detect_on": "window", 
-                     
                     "events": { "onhover": { "enable": false }, "onclick": { "enable": true, "mode": "repulse" } },
                     "modes": {
                         "repulse": { "distance": 300, "duration": 0.4 }
@@ -1067,17 +1068,15 @@
         ]).then(function() {
             initWidget({
                 waifuPath: cdnBase + "waifu-tips.json",
-                cdnPath: "https://live2d.fghrsh.net/api/",
-                modelId: 1,            
-                modelTexturesId: 1,   
+                apiPath: "https://live2d.fghrsh.net/api/", 
+                
                 showToolMenu: true,
                 showWelcomeMessage: true,
                 showHitokoto: !isMobile
             });
         });
     })();
-</script>
-<div
+</script><div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
   data-url="https://pigwormkoishi.github.io/">
