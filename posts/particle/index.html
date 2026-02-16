@@ -21,7 +21,7 @@
 
   
   
-    <meta name="description" content="记录 PigWorm 个人网站底层视觉体验的极致打磨：基于三级图层的物理级单反景深粒子特效。">
+    <meta name="description" content="记录 PigWorm 个人网站底层视觉体验的极致打磨：基于双级图层的景深粒子特效。">
   
   
     <meta name="keywords" content="Hugo,网站设计,前端,Live2D,CSS特效,">
@@ -61,7 +61,7 @@
   <meta property="og:url" content="https://pigwormkoishi.github.io/posts/particle/">
   <meta property="og:site_name" content="PigWorm | 甲基硫代磷酸二乙酯 的个人主页">
   <meta property="og:title" content="进阶折腾： 3D 粒子景深重构">
-  <meta property="og:description" content="记录 PigWorm 个人网站底层视觉体验的极致打磨：基于三级图层的物理级单反景深粒子特效。">
+  <meta property="og:description" content="记录 PigWorm 个人网站底层视觉体验的极致打磨：基于双级图层的景深粒子特效。">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -76,7 +76,7 @@
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="进阶折腾： 3D 粒子景深重构">
-  <meta name="twitter:description" content="记录 PigWorm 个人网站底层视觉体验的极致打磨：基于三级图层的物理级单反景深粒子特效。">
+  <meta name="twitter:description" content="记录 PigWorm 个人网站底层视觉体验的极致打磨：基于双级图层的景深粒子特效。">
 
   
   
@@ -246,7 +246,7 @@
     "keywords": ["Hugo","网站设计","前端","Live2D","CSS特效"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "755"
+    "wordCount": "355"
   }]
   </script>
 
@@ -667,7 +667,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-16T00:00:00&#43;00:00">February 16, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>755 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">2 分钟</span>
+      <time datetime="2026-02-16T00:00:00&#43;00:00">February 16, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>355 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
     
 
     
@@ -856,35 +856,33 @@
     </span>
     
 </h2>
-<p>对<code>footer.html</code>粒子部分进行了一次彻头彻尾的重构。基于三级图层的物理级单反景深粒子特效。靠近光标小于2.3的粒子扩大至2.3，景深。</p>
-<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="cm">/* 粒子系统多层初始化 */</span>
+<p>对<code>footer.html</code>粒子部分进行了一次重构。基于双层级图层的物理级单反景深粒子特效。景深。</p>
+<div class="highlight-wrapper"><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="cm">/* 3. 粒子系统双层初始化 */</span>
 </span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">particlesJS</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1">// [图层 A] 中景焦点层：PC 2.2 尺寸，完全清晰，受鼠标 hover 交互，保留点击排斥
+</span></span><span class="line"><span class="cl">    <span class="c1">// [图层 A] 中景焦点层：PC 2 尺寸，完全清晰
 </span></span></span><span class="line"><span class="cl">    <span class="nx">particlesJS</span><span class="p">(</span><span class="s1">&#39;particles-js&#39;</span><span class="p">,</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;particles&#34;</span><span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;number&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="nx">isMobile</span> <span class="o">?</span> <span class="mi">80</span> <span class="o">:</span> <span class="mi">160</span><span class="p">,</span> <span class="s2">&#34;density&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;value_area&#34;</span><span class="o">:</span> <span class="mi">800</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;color&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;#FFD700&#34;</span><span class="p">,</span> <span class="s2">&#34;#98FB98&#34;</span><span class="p">,</span> <span class="s2">&#34;#FFFACD&#34;</span><span class="p">]</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;shape&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;type&#34;</span><span class="o">:</span> <span class="s2">&#34;circle&#34;</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;opacity&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="mf">0.6</span><span class="p">,</span> <span class="s2">&#34;random&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;anim&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;opacity_min&#34;</span><span class="o">:</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">&#34;sync&#34;</span><span class="o">:</span> <span class="kc">false</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;size&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="mf">2.2</span><span class="p">,</span> <span class="s2">&#34;random&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;anim&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;size_min&#34;</span><span class="o">:</span> <span class="mf">0.5</span> <span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;size&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;random&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;anim&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&#34;size_min&#34;</span><span class="o">:</span> <span class="mf">0.5</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;line_linked&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;move&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s2">&#34;direction&#34;</span><span class="o">:</span> <span class="s2">&#34;none&#34;</span><span class="p">,</span> <span class="s2">&#34;random&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;out_mode&#34;</span><span class="o">:</span> <span class="s2">&#34;out&#34;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;interactivity&#34;</span><span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;detect_on&#34;</span><span class="o">:</span> <span class="s2">&#34;window&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">            <span class="cm">/* 维护说明：恢复 onclick 为 repulse (排斥)，但不配置 push，确保不产生新粒子 */</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;events&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;onhover&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="o">!</span><span class="nx">isMobile</span><span class="p">,</span> <span class="s2">&#34;mode&#34;</span><span class="o">:</span> <span class="s2">&#34;bubble&#34;</span> <span class="p">},</span> <span class="s2">&#34;onclick&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;mode&#34;</span><span class="o">:</span> <span class="s2">&#34;repulse&#34;</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;modes&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="s2">&#34;bubble&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;distance&#34;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&#34;size&#34;</span><span class="o">:</span> <span class="mf">2.2</span><span class="p">,</span> <span class="s2">&#34;duration&#34;</span><span class="o">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&#34;opacity&#34;</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">                <span class="cm">/* 维护说明：调整 distance 改变排斥范围，duration 改变排斥动画时间 */</span>
+</span></span><span class="line"><span class="cl">                <span class="s2">&#34;bubble&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;distance&#34;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&#34;size&#34;</span><span class="o">:</span> <span class="mf">2.1</span><span class="p">,</span> <span class="s2">&#34;duration&#34;</span><span class="o">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&#34;opacity&#34;</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">                <span class="s2">&#34;repulse&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;distance&#34;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">&#34;duration&#34;</span><span class="o">:</span> <span class="mf">0.4</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;retina_detect&#34;</span><span class="o">:</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// [图层 B] 近景光斑层：PC 8 尺寸，强模糊
+</span></span><span class="line"><span class="cl">    <span class="c1">// [图层 B] 近景光斑层：PC 8 尺寸，强模糊 
 </span></span></span><span class="line"><span class="cl">    <span class="nx">particlesJS</span><span class="p">(</span><span class="s1">&#39;particles-js-blur&#39;</span><span class="p">,</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;particles&#34;</span><span class="o">:</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;number&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="nx">isMobile</span> <span class="o">?</span> <span class="mi">25</span> <span class="o">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&#34;density&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;value_area&#34;</span><span class="o">:</span> <span class="mi">800</span> <span class="p">}</span> <span class="p">},</span>
@@ -895,42 +893,16 @@
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;line_linked&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;move&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;direction&#34;</span><span class="o">:</span> <span class="s2">&#34;none&#34;</span><span class="p">,</span> <span class="s2">&#34;random&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;out_mode&#34;</span><span class="o">:</span> <span class="s2">&#34;out&#34;</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;interactivity&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;interactivity&#34;</span><span class="o">:</span> <span class="p">{</span> 
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;detect_on&#34;</span><span class="o">:</span> <span class="s2">&#34;window&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">            <span class="cm">/* 维护说明：恢复 onclick 为 repulse (排斥)，但不配置 push，确保不产生新粒子 */</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;events&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;onhover&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="o">!</span><span class="nx">isMobile</span><span class="p">,</span> <span class="s2">&#34;mode&#34;</span><span class="o">:</span> <span class="s2">&#34;bubble&#34;</span> <span class="p">},</span> <span class="s2">&#34;onclick&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;mode&#34;</span><span class="o">:</span> <span class="s2">&#34;repulse&#34;</span> <span class="p">}</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;events&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;onhover&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span> <span class="s2">&#34;onclick&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;mode&#34;</span><span class="o">:</span> <span class="s2">&#34;repulse&#34;</span> <span class="p">}</span> <span class="p">},</span>
 </span></span><span class="line"><span class="cl">            <span class="s2">&#34;modes&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="s2">&#34;bubble&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;distance&#34;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&#34;size&#34;</span><span class="o">:</span> <span class="mf">2.2</span><span class="p">,</span> <span class="s2">&#34;duration&#34;</span><span class="o">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&#34;opacity&#34;</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">                <span class="cm">/* 维护说明：调整 distance 改变排斥范围，duration 改变排斥动画时间 */</span>
 </span></span><span class="line"><span class="cl">                <span class="s2">&#34;repulse&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;distance&#34;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">&#34;duration&#34;</span><span class="o">:</span> <span class="mf">0.4</span> <span class="p">}</span>
 </span></span><span class="line"><span class="cl">            <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
 </span></span><span class="line"><span class="cl">        <span class="s2">&#34;retina_detect&#34;</span><span class="o">:</span> <span class="kc">true</span>
 </span></span><span class="line"><span class="cl">    <span class="p">});</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1">// [图层 C] 远景微尘层：PC 1.6 尺寸，中模糊
-</span></span></span><span class="line"><span class="cl">    <span class="nx">particlesJS</span><span class="p">(</span><span class="s1">&#39;particles-js-micro-blur&#39;</span><span class="p">,</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;particles&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;number&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="nx">isMobile</span> <span class="o">?</span> <span class="mi">80</span> <span class="o">:</span> <span class="mi">160</span><span class="p">,</span> <span class="s2">&#34;density&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;value_area&#34;</span><span class="o">:</span> <span class="mi">800</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;color&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;#FFD700&#34;</span><span class="p">,</span> <span class="s2">&#34;#98FB98&#34;</span><span class="p">,</span> <span class="s2">&#34;#FFFACD&#34;</span><span class="p">]</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;shape&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;type&#34;</span><span class="o">:</span> <span class="s2">&#34;circle&#34;</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;opacity&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="mf">0.7</span><span class="p">,</span> <span class="s2">&#34;random&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;anim&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;opacity_min&#34;</span><span class="o">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&#34;sync&#34;</span><span class="o">:</span> <span class="kc">false</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;size&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="mf">1.6</span><span class="p">,</span> <span class="s2">&#34;random&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;anim&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;size_min&#34;</span><span class="o">:</span> <span class="mf">0.2</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;line_linked&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">false</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;move&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s2">&#34;direction&#34;</span><span class="o">:</span> <span class="s2">&#34;none&#34;</span><span class="p">,</span> <span class="s2">&#34;random&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;out_mode&#34;</span><span class="o">:</span> <span class="s2">&#34;out&#34;</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;interactivity&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;detect_on&#34;</span><span class="o">:</span> <span class="s2">&#34;window&#34;</span><span class="p">,</span> 
-</span></span><span class="line"><span class="cl">            <span class="cm">/* 维护说明：恢复 onclick 为 repulse (排斥)，但不配置 push，确保不产生新粒子 */</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;events&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;onhover&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="o">!</span><span class="nx">isMobile</span><span class="p">,</span> <span class="s2">&#34;mode&#34;</span><span class="o">:</span> <span class="s2">&#34;bubble&#34;</span> <span class="p">},</span> <span class="s2">&#34;onclick&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;enable&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span> <span class="s2">&#34;mode&#34;</span><span class="o">:</span> <span class="s2">&#34;repulse&#34;</span> <span class="p">}</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">            <span class="s2">&#34;modes&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="s2">&#34;bubble&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;distance&#34;</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&#34;size&#34;</span><span class="o">:</span> <span class="mf">2.2</span><span class="p">,</span> <span class="s2">&#34;duration&#34;</span><span class="o">:</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&#34;opacity&#34;</span><span class="o">:</span> <span class="mi">1</span> <span class="p">},</span>
-</span></span><span class="line"><span class="cl">                <span class="cm">/* 维护说明：调整 distance 改变排斥范围，duration 改变排斥动画时间 */</span>
-</span></span><span class="line"><span class="cl">                <span class="s2">&#34;repulse&#34;</span><span class="o">:</span> <span class="p">{</span> <span class="s2">&#34;distance&#34;</span><span class="o">:</span> <span class="mi">300</span><span class="p">,</span> <span class="s2">&#34;duration&#34;</span><span class="o">:</span> <span class="mf">0.4</span> <span class="p">}</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;retina_detect&#34;</span><span class="o">:</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl">    <span class="p">});</span></span></span></code></pre></div></div>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div></div>
 <hr>
 
           
@@ -1046,15 +1018,6 @@
     }
 
      
-    #particles-js-micro-blur {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-        z-index: -3; 
-        pointer-events: none; 
-        filter: blur(1.5px);  
-        opacity: 0.8;
-    }
-
-     
     #particles-js { 
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
         z-index: -2; 
@@ -1122,7 +1085,6 @@
 </footer>
 
 <div id="particles-js-blur"></div>
-<div id="particles-js-micro-blur"></div>
 <div id="particles-js"></div>
 <div id="particles-depth-layer"></div>
 
@@ -1151,7 +1113,7 @@
             
             particlesJS('particles-js', {
                 "particles": {
-                    "number": { "value": isMobile ? 80 : 160, "density": { "enable": true, "value_area": 800 } },
+                    "number": { "value": isMobile ? 120 : 240, "density": { "enable": true, "value_area": 800 } },
                     "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
                     "shape": { "type": "circle" },
                     "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
@@ -1164,7 +1126,7 @@
                      
                     "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
                     "modes": {
-                        "bubble": { "distance": 200, "size": 2.2, "duration": 0.3, "opacity": 1 },
+                        "bubble": { "distance": 200, "size": 2.1, "duration": 0.3, "opacity": 1 },
                          
                         "repulse": { "distance": 300, "duration": 0.4 }
                     }
@@ -1175,7 +1137,7 @@
             
             particlesJS('particles-js-blur', {
                 "particles": {
-                    "number": { "value": isMobile ? 25 : 50, "density": { "enable": true, "value_area": 800 } },
+                    "number": { "value": isMobile ? 20 : 40, "density": { "enable": true, "value_area": 800 } },
                     "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
                     "shape": { "type": "circle" },
                     "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.2, "sync": false } },
@@ -1183,37 +1145,11 @@
                     "line_linked": { "enable": false },
                     "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "out_mode": "out" }
                 },
-                "interactivity": {
+                "interactivity": { 
                     "detect_on": "window", 
                      
-                    "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
+                    "events": { "onhover": { "enable": false }, "onclick": { "enable": true, "mode": "repulse" } },
                     "modes": {
-                        "bubble": { "distance": 200, "size": 2.2, "duration": 0.3, "opacity": 1 },
-                         
-                        "repulse": { "distance": 300, "duration": 0.4 }
-                    }
-                },
-                "retina_detect": true
-            });
-
-            
-            particlesJS('particles-js-micro-blur', {
-                "particles": {
-                    "number": { "value": isMobile ? 80 : 160, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
-                    "shape": { "type": "circle" },
-                    "opacity": { "value": 0.7, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.3, "sync": false } },
-                    "size": { "value": 1.6, "random": true, "anim": { "enable": true, "speed": 1, "size_min": 0.2 } },
-                    "line_linked": { "enable": false },
-                    "move": { "enable": true, "speed": 0.2, "direction": "none", "random": true, "out_mode": "out" }
-                },
-                "interactivity": {
-                    "detect_on": "window", 
-                     
-                    "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
-                    "modes": {
-                        "bubble": { "distance": 200, "size": 2.2, "duration": 0.3, "opacity": 1 },
-                         
                         "repulse": { "distance": 300, "duration": 0.4 }
                     }
                 },
