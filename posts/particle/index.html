@@ -245,7 +245,7 @@
     "keywords": ["Hugo","网站设计","前端","CSS特效"],
     
     "mainEntityOfPage": "true",
-    "wordCount": "883"
+    "wordCount": "831"
   }]
   </script>
 
@@ -666,7 +666,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-16T00:00:00&#43;00:00">February 16, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>883 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">2 分钟</span>
+      <time datetime="2026-02-16T00:00:00&#43;00:00">February 16, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>831 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">2 分钟</span>
     
 
     
@@ -906,8 +906,8 @@
     </span>
     
 </h3>
-<p>这是承载主要交互的视觉焦点层。我为它加入了一个非常克制的 <code>filter: blur(0.3px)</code>。</p>
-<blockquote><p><strong>细节调优：</strong> 为什么不是完全清晰（0px）？因为在真实的物理镜头中，即便是焦点内的发光体，也会带有极微弱的光晕。这 0.3px 的微小模糊，彻底洗掉了 Canvas 渲染带来的“锐利像素感”，让画面变得更加柔和护眼。</p>
+<p>这是承载主要交互的视觉焦点层。我为它加入了一个非常克制的 <code>filter: blur(0.4px)</code>。</p>
+<blockquote><p><strong>细节调优：</strong> 为什么不是完全清晰（0px）？因为在真实的物理镜头中，即便是焦点内的发光体，也会带有极微弱的光晕。这 0.4px 的微小模糊，彻底洗掉了 Canvas 渲染带来的“锐利像素感”，让画面变得更加柔和护眼。</p>
 </blockquote>
 <h3 class="relative group">3. 光标动态交互遮罩 (z-index: -1)
     <div id="3-光标动态交互遮罩-z-index--1" class="anchor"></div>
@@ -918,8 +918,8 @@
     </span>
     
 </h3>
-<p>这是本次更新中最“极客”的一笔。当鼠标靠近中景粒子时，粒子会微微膨胀。如果在现实中，物体突然贴近镜头，必然会产生强烈的失焦。</p>
-<p>为了实现这一点，我通过 JavaScript 实时捕获鼠标坐标，然后利用 CSS 的 <code>mask-image: radial-gradient</code> 在屏幕上挖出了一个跟随光标移动的渐变孔径，并在孔径区域施加了 <code>filter: blur(2px)</code>。当粒子受鼠标影响放大并滑入这个区域时，会瞬间产生绝美的光斑融化感。</p>
+<p>当鼠标靠近中景粒子时，粒子会微微膨胀。
+通过 JavaScript 实时捕获鼠标坐标，然后利用 CSS 的 <code>mask-image: radial-gradient</code> 在屏幕上挖出了一个跟随光标移动的渐变孔径，并在孔径区域施加了 <code>filter: blur(2px)</code>。当粒子受鼠标影响放大并滑入这个区域时，会瞬间产生绝美的光斑融化感。</p>
 <hr>
 
 <h2 class="relative group">核心 CSS 代码解析
