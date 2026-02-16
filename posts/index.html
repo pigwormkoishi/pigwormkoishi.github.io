@@ -697,7 +697,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-16T00:00:00&#43;00:00">February 16, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>487 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+      <time datetime="2026-02-16T00:00:00&#43;00:00">February 16, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>755 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">2 分钟</span>
     
 
     
@@ -1458,10 +1458,12 @@
                 },
                 "interactivity": {
                     "detect_on": "window", 
+                     
                     "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
                     "modes": {
                         "bubble": { "distance": 200, "size": 2.2, "duration": 0.3, "opacity": 1 },
-                        "repulse": { "distance": 300, "duration": 0.4 } 
+                         
+                        "repulse": { "distance": 300, "duration": 0.4 }
                     }
                 },
                 "retina_detect": true
@@ -1478,7 +1480,16 @@
                     "line_linked": { "enable": false },
                     "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "out_mode": "out" }
                 },
-                "interactivity": { "detect_on": "window", "events": { "onhover": { "enable": false } } },
+                "interactivity": {
+                    "detect_on": "window", 
+                     
+                    "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
+                    "modes": {
+                        "bubble": { "distance": 200, "size": 2.2, "duration": 0.3, "opacity": 1 },
+                         
+                        "repulse": { "distance": 300, "duration": 0.4 }
+                    }
+                },
                 "retina_detect": true
             });
 
@@ -1493,7 +1504,16 @@
                     "line_linked": { "enable": false },
                     "move": { "enable": true, "speed": 0.2, "direction": "none", "random": true, "out_mode": "out" }
                 },
-                "interactivity": { "detect_on": "window", "events": { "onhover": { "enable": false } } },
+                "interactivity": {
+                    "detect_on": "window", 
+                     
+                    "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
+                    "modes": {
+                        "bubble": { "distance": 200, "size": 2.2, "duration": 0.3, "opacity": 1 },
+                         
+                        "repulse": { "distance": 300, "duration": 0.4 }
+                    }
+                },
                 "retina_detect": true
             });
         }
