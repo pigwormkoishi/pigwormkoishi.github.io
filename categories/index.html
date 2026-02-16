@@ -638,7 +638,7 @@
     #particles-js { 
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
         z-index: -2; 
-		filter: blur(0.3px);
+		filter: blur(0.4px);  
         pointer-events: none; 
     }
 
@@ -731,11 +731,11 @@
             
             particlesJS('particles-js', {
                 "particles": {
-                    "number": { "value": isMobile ? 120 : 240, "density": { "enable": true, "value_area": 800 } },
+                    "number": { "value": isMobile ? 130 : 260, "density": { "enable": true, "value_area": 800 } },
                     "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
                     "shape": { "type": "circle" },
                     "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                    "size": { "value": 2.4, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.5 } },
+                    "size": { "value": 2.6, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.5 } },
                     "line_linked": { "enable": false },
                     "move": { "enable": true, "speed": 0.4, "direction": "none", "random": true, "out_mode": "out" }
                 },
@@ -744,7 +744,7 @@
                      
                     "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
                     "modes": {
-                        "bubble": { "distance": 200, "size": 2.2, "duration": 0.3, "opacity": 1 },
+                        "bubble": { "distance": 200, "size": 2.7, "duration": 0.3, "opacity": 1 },
                          
                         "repulse": { "distance": 150, "duration": 0.4 }
                     }
