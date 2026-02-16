@@ -994,11 +994,9 @@
         pointer-events: none; 
         backdrop-filter: blur(0.5px); 
         -webkit-backdrop-filter: blur(0.5px);
-        
          
         mask-image: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,0,0,1) 0%, transparent 100%);
         -webkit-mask-image: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0,0,0,1) 0%, transparent 100%);
-        
          
         filter: blur(2px); 
     }
@@ -1008,7 +1006,7 @@
         position: fixed !important; 
         z-index: 10000 !important; 
         line-height: 0;
-        left: auto !important;  
+        left: auto !important; 
         right: 25px !important; 
     }
     
@@ -1024,23 +1022,18 @@
 
      
     @media (max-width: 767px) {
-        #particles-depth-layer, #particles-js-blur, #particles-js-micro-blur { display: none !important; }
-        
          
+        #particles-depth-layer { display: none !important; }
+        
         body #waifu {
             transform: scale(0.5) !important;
             transform-origin: bottom right !important;
             right: 0px !important;
             margin-bottom: -20px !important; 
         }
-        
-         
         #waifu-tips { width: 140px !important; font-size: 11px !important; padding: 4px 8px !important; min-height: 30px !important; line-height: 1.3 !important; margin-top: -40px !important; }
         
-         
         #waifu-tool { display: block !important; opacity: 1 !important; visibility: visible !important; height: auto !important; right: 40px !important; }
-        
-         
         #waifu-tool span { display: none !important; }
         #waifu-tool span#waifu-tool-switch-model, #waifu-tool span#waifu-tool-switch-texture, #waifu-tool span#waifu-tool-quit { display: block !important; color: #5b6c7d !important; }
     }
@@ -1063,14 +1056,12 @@
 
 <script type="text/javascript">
     (function() {
-        
         var isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent) || window.innerWidth < 768 || screen.width < 768;
 
-        
+         
         localStorage.removeItem('waifu-display'); 
 
-        
-
+         
         if (!isMobile) {
             window.addEventListener('mousemove', function(e) {
                 var x = (e.clientX / window.innerWidth) * 100;
@@ -1080,70 +1071,63 @@
             });
         }
 
-        
-
+         
         if (window.particlesJS) {
             
             
             particlesJS('particles-js', {
                 "particles": {
-                    "number": { "value": isMobile ? 80 : 180, "density": { "enable": true, "value_area": 800 } },
+                    "number": { "value": isMobile ? 80 : 160, "density": { "enable": true, "value_area": 800 } },
                     "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
                     "shape": { "type": "circle" },
                     "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                    "size": { "value": 2.4, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.5 } },
+                    "size": { "value": 2.2, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.5 } },
                     "line_linked": { "enable": false },
                     "move": { "enable": true, "speed": 0.4, "direction": "none", "random": true, "out_mode": "out" }
                 },
                 "interactivity": {
                     "detect_on": "window", 
-                    "events": {
-                        "onhover": { "enable": !isMobile, "mode": "bubble" },
-                        "onclick": { "enable": true, "mode": "repulse" }
-                    },
+                    "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
                     "modes": {
-                        "bubble": { "distance": 200, "size": 2.3, "duration": 0.3, "opacity": 1 },
+                        "bubble": { "distance": 200, "size": 2.2, "duration": 0.3, "opacity": 1 },
                         "repulse": { "distance": 300, "duration": 0.4 } 
                     }
                 },
                 "retina_detect": true
             });
-        
+
             
             particlesJS('particles-js-blur', {
                 "particles": {
-                    "number": { "value": isMobile ? 0 : 25, "density": { "enable": true, "value_area": 800 } },
+                    "number": { "value": isMobile ? 25 : 50, "density": { "enable": true, "value_area": 800 } },
                     "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
                     "shape": { "type": "circle" },
                     "opacity": { "value": 0.5, "random": true, "anim": { "enable": true, "speed": 0.5, "opacity_min": 0.2, "sync": false } },
-                    "size": { "value": 10, "random": true, "anim": { "enable": false } },
+                    "size": { "value": 8, "random": true, "anim": { "enable": false } },
                     "line_linked": { "enable": false },
                     "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "out_mode": "out" }
                 },
-                "interactivity": { "detect_on": "window", "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } },
+                "interactivity": { "detect_on": "window", "events": { "onhover": { "enable": false } } },
                 "retina_detect": true
             });
-        
+
             
-            if (!isMobile) {
-                particlesJS('particles-js-micro-blur', {
-                    "particles": {
-                        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-                        "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
-                        "shape": { "type": "circle" },
-                        "opacity": { "value": 0.7, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.3, "sync": false } },
-                        "size": { "value": 2, "random": true, "anim": { "enable": true, "speed": 1, "size_min": 0.2 } },
-                        "line_linked": { "enable": false },
-                        "move": { "enable": true, "speed": 0.2, "direction": "none", "random": true, "out_mode": "out" }
-                    },
-                    "interactivity": { "detect_on": "window", "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } },
-                    "retina_detect": true
-                });
-            }
+            particlesJS('particles-js-micro-blur', {
+                "particles": {
+                    "number": { "value": isMobile ? 80 : 160, "density": { "enable": true, "value_area": 800 } },
+                    "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.7, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.3, "sync": false } },
+                    "size": { "value": 1.8, "random": true, "anim": { "enable": true, "speed": 1, "size_min": 0.2 } },
+                    "line_linked": { "enable": false },
+                    "move": { "enable": true, "speed": 0.2, "direction": "none", "random": true, "out_mode": "out" }
+                },
+                "interactivity": { "detect_on": "window", "events": { "onhover": { "enable": false } } },
+                "retina_detect": true
+            });
         }
 
-        
-
+         
         var cdnBase = "https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/";
         function loadRes(url, type) {
             return new Promise(function(resolve) {
@@ -1153,8 +1137,6 @@
                 document.head.appendChild(tag);
             });
         }
-
-        
 
         Promise.all([
             loadRes(cdnBase + "waifu.css", "css"),
