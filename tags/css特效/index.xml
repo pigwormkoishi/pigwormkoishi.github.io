@@ -10,12 +10,12 @@
     <lastBuildDate>Mon, 16 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://pigwormkoishi.github.io/tags/css%E7%89%B9%E6%95%88/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>进阶折腾： 3D 粒子重构：添加景深</title>
+      <title>进阶折腾：3D 粒子重构与镜头景深 (DoF) 特效</title>
       <link>https://pigwormkoishi.github.io/posts/particle/</link>
       <pubDate>Mon, 16 Feb 2026 00:00:00 +0000</pubDate>
       
       <guid>https://pigwormkoishi.github.io/posts/particle/</guid>
-      <description>记录 PigWorm 个人网站底层视觉体验的极致打磨：基于双级图层的景深粒子特效。</description>
+      <description>记录 PigWorm 个人网站底层视觉体验的极致打磨：基于双层级图层的景深粒子特效，以及跟随光标的动态焦外散景。</description>
       
     </item>
     
