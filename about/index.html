@@ -975,7 +975,7 @@
     #particles-js { 
         position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
         z-index: -2; 
-		filter: blur(0.4px);  
+        filter: blur(0.4px);  
         pointer-events: none; 
     }
 
@@ -1072,7 +1072,7 @@
                     "color": { "value": ["#FFD700", "#98FB98", "#FFFACD"] },
                     "shape": { "type": "circle" },
                     "opacity": { "value": 0.6, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                    "size": { "value": 2.3, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.5 } },
+                    "size": { "value": 2.2, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.5 } },
                     "line_linked": { "enable": false },
                     "move": { "enable": true, "speed": 0.4, "direction": "none", "random": true, "out_mode": "out" }
                 },
@@ -1081,7 +1081,7 @@
                      
                     "events": { "onhover": { "enable": !isMobile, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" } },
                     "modes": {
-                        "bubble": { "distance": 200, "size": 2.4, "duration": 0.3, "opacity": 1 },
+                        "bubble": { "distance": 200, "size": 2.3, "duration": 0.3, "opacity": 1 },
                          
                         "repulse": { "distance": 150, "duration": 0.4 }
                     }
@@ -1131,15 +1131,16 @@
             initWidget({
                 waifuPath: cdnBase + "waifu-tips.json",
                 cdnPath: "https://live2d.fghrsh.net/api/",
-                modelId: 1, 
-                modelTexturesId: 1,
+                modelId: 1,            
+                modelTexturesId: 87,   
                 showToolMenu: true,
                 showWelcomeMessage: true,
                 showHitokoto: !isMobile
             });
         });
     })();
-</script><div
+</script>
+<div
   id="search-wrapper"
   class="invisible fixed inset-0 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh] z-500"
   data-url="https://pigwormkoishi.github.io/">
