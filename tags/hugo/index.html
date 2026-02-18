@@ -299,81 +299,399 @@
     id="menu-blur"
     class="absolute opacity-0 inset-x-0 top-0 h-full single_hero_background nozoom backdrop-blur-2xl backdrop-saturate-220 backdrop-brightness-112 dark:backdrop-saturate-180 dark:backdrop-brightness-95 bg-primary-200/80 bg-linear-60 dark:bg-primary-800/30 shadow-xl"></div>
   <div class="relative m-auto leading-7 max-w-7xl px-6 sm:px-14 md:px-24 lg:px-32">
-    ---
-title: "为 Hugo 博客添加丝滑的“毛玻璃”必应全网搜索栏"
-date: 2026-02-18T22:50:00+08:00
-draft: false
-description: "把博客导航栏变成优雅的起始页：用几十行前端代码给 Blowfish 主题加上极简的必应全网搜索功能。"
-tags: ["Hugo", "Blowfish", "前端", "博客折腾"]
-categories: ["技术教程"]
----
+    <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
+  
+  
+  
+    <a href="/" class="text-base font-medium truncate min-w-0 shrink">
+      PigWorm | 甲基硫代磷酸二乙酯 的个人主页
+    </a>
+  
+  
+  <style>
+      .bing-search-wrapper { 
+          display: flex; 
+          align-items: center; 
+          justify-content: center; 
+          width: 100%; 
+      }
+      
+       
+      .search-box-container {
+          position: relative;
+          display: inline-block;
+      }
 
-使用 Hugo 构建静态博客时，很多人的第一反应是做站内搜索。但如果换个思路：把我们精心设计的博客当成个人主页甚至浏览器的起始页，直接在导航栏集成一个**全网搜索引擎**，不仅自己用着顺手，交互体验也极具极客感。
+      .bing-search-input {
+          background: rgba(150, 150, 150, 0.1); 
+          border: 1px solid rgba(150, 150, 150, 0.2);
+          border-radius: 20px;
+          padding: 5px 16px; 
+          font-size: 13.5px;
+          color: inherit; 
+          outline: none;
+          width: 240px; 
+          transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+      }
+      .bing-search-input:focus {
+          width: 340px; 
+          border-color: #98FB98; 
+          box-shadow: 0 0 8px rgba(152, 251, 152, 0.3);
+          background: rgba(150, 150, 150, 0.15);
+      }
+      .bing-search-input::placeholder { color: inherit; opacity: 0.5; }
 
-为了不破坏 Blowfish 主题原有的极简导航栏，我抛弃了传统死板的输入框，利用 Tailwind CSS 和原生 JS，手搓了一个带有**呼吸感和高斯模糊**的隐藏式全网必应 (Bing) 搜索框。
+       
+      .bing-suggest-box {
+          position: absolute;
+          top: 110%;  
+          left: 0;
+          width: 100%;
+          background: rgba(255, 255, 255, 0.1);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(150, 150, 150, 0.2);
+          border-radius: 12px;
+          box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+          overflow: hidden;
+          display: none;  
+          z-index: 9999;
+      }
+      
+       
+      .dark .bing-suggest-box { background: rgba(30, 30, 30, 0.6); }
+      .light .bing-suggest-box { background: rgba(255, 255, 255, 0.6); }
 
-### ✨ 设计与交互体验
+      .bing-suggest-item {
+          padding: 8px 16px;
+          font-size: 13px;
+          color: inherit;
+          cursor: pointer;
+          transition: background 0.2s ease;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+      }
+      .bing-suggest-item:hover {
+          background: rgba(152, 251, 152, 0.3);  
+      }
+  </style>
 
-* **静如处子**：默认状态下居中显示，宽度克制。背景采用 `backdrop-filter: blur(8px)` 的毛玻璃效果，完美融入网站的深色/浅色模式，不喧宾夺主。
-* **动如脱兔**：当光标点击聚焦时，它会伴随丝滑的贝塞尔曲线（`cubic-bezier`）动画向两侧拉长展开，边框亮起薄荷绿（`#98FB98`）的高光微晕，给用户明确的输入反馈。
-* **无缝跳转**：输入关键词按下回车后，自动在新标签页唤起必应的全网搜索结果，绝不打断当前的页面心流。
+  <div class="flex-1 justify-center hidden md:flex"> 
+      <div class="bing-search-wrapper">
+          <div class="search-box-container">
+              <form onsubmit="doBingSearch(event)" style="margin: 0; padding: 0;">
+                  <input type="text" id="bing-keyword" class="bing-search-input" placeholder="Bing 全网搜索..." autocomplete="off">
+              </form>
+              <div id="bing-suggest-box" class="bing-suggest-box"></div>
+          </div>
+      </div>
+  </div>
 
-### 🛠️ 核心代码实现
+  <script>
+      const searchInput = document.getElementById('bing-keyword');
+      const suggestBox = document.getElementById('bing-suggest-box');
+      let debounceTimer = null;
 
-以 Blowfish 主题为例，我们需要利用 Hugo 的优先级机制覆写顶部的导航栏文件，避免直接修改主题源码。
+      
+      function doBingSearch(e, directKeyword = null) {
+          if(e) e.preventDefault(); 
+          let keyword = directKeyword || searchInput.value;
+          if (keyword.trim() !== "") {
+              let bingUrl = "https://www.bing.com/search?q=" + encodeURIComponent(keyword);
+              window.open(bingUrl, '_blank'); 
+              searchInput.value = ''; 
+              searchInput.blur(); 
+              suggestBox.style.display = 'none'; 
+          }
+      }
 
-**第一步：** 在你的博客根目录新建路径 `layouts/partials/header/`，并将主题目录下的 `themes/blowfish/layouts/partials/header/basic.html` 完整复制过来。
+      
+      searchInput.addEventListener('input', function() {
+          clearTimeout(debounceTimer);
+          let keyword = this.value.trim();
+          
+          if (keyword === "") {
+              suggestBox.style.display = 'none';
+              return;
+          }
 
-**第二步：** 打开你刚复制出来的 `basic.html`，在代码中部的区域（Logo 和右侧菜单之间的位置）插入以下核心代码：
+          
+          debounceTimer = setTimeout(() => {
+              
+              let script = document.createElement('script');
+              script.src = `https://api.bing.com/osjson.aspx?query=${encodeURIComponent(keyword)}&JsonType=callback&JsonCallback=renderBingSuggest`;
+              document.body.appendChild(script);
+              
+              
+              script.onload = () => document.body.removeChild(script);
+          }, 250);
+      });
 
-```html
-<style>
-    .bing-search-wrapper { display: flex; align-items: center; justify-content: center; width: 100%; }
-    .bing-search-input {
-        background: rgba(150, 150, 150, 0.1); 
-        border: 1px solid rgba(150, 150, 150, 0.2);
-        border-radius: 20px;
-        padding: 5px 16px; 
-        font-size: 13.5px;
-        color: inherit; 
-        outline: none;
-        width: 240px; 
-        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-    }
-     
-    .bing-search-input:focus {
-        width: 340px; 
-        border-color: #98FB98; 
-        box-shadow: 0 0 8px rgba(152, 251, 152, 0.3);
-        background: rgba(150, 150, 150, 0.15);
-    }
-    .bing-search-input::placeholder { color: inherit; opacity: 0.5; }
-</style>
+      
+      window.renderBingSuggest = function(data) {
+          
+          let suggests = data[1] || [];
+          
+          if (suggests.length === 0) {
+              suggestBox.style.display = 'none';
+              return;
+          }
 
-<div class="flex-1 justify-center hidden md:flex"> 
-    <div class="bing-search-wrapper">
-        <form onsubmit="doBingSearch(event)" style="margin: 0; padding: 0;">
-            <input type="text" id="bing-keyword" class="bing-search-input" placeholder="Bing 全网搜索..." autocomplete="off">
-        </form>
+          suggestBox.innerHTML = ''; 
+          
+          
+          suggests.slice(0, 6).forEach(word => {
+              let div = document.createElement('div');
+              div.className = 'bing-suggest-item';
+              div.textContent = word;
+              
+              div.onclick = function() {
+                  searchInput.value = word;
+                  doBingSearch(null, word);
+              };
+              suggestBox.appendChild(div);
+          });
+          
+          suggestBox.style.display = 'block'; 
+      };
+
+      
+      document.addEventListener('click', function(e) {
+          if (e.target !== searchInput && e.target !== suggestBox) {
+              suggestBox.style.display = 'none';
+          }
+      });
+  </script>
+  <div class="flex items-center ms-auto shrink-0">
+    <div class="hidden md:flex">
+      <nav class="flex items-center gap-x-5 h-12">
+  
+    
+      
+  
+    <a
+      href="/posts/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="归档"
+      title="归档">
+      
+      
+        <span class="text-base font-medium break-normal">
+          归档
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/tags/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="标签"
+      title="Tags">
+      
+      
+        <span class="text-base font-medium break-normal">
+          标签
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/about/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="关于"
+      title="关于">
+      
+      
+        <span class="text-base font-medium break-normal">
+          关于
+        </span>
+      
+    </a>
+  
+
+    
+  
+
+  
+
+  
+
+  
+    <button
+      id="search-button"
+      aria-label="Search"
+      class="text-base bf-icon-color-hover"
+      title="搜索 (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <div class="flex items-center">
+      <button
+        id="appearance-switcher"
+        aria-label="Dark mode switcher"
+        type="button"
+        class="text-base bf-icon-color-hover">
+        <div class="flex items-center justify-center dark:hidden">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+        </div>
+        <div class="items-center justify-center hidden dark:flex">
+          <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+        </div>
+      </button>
     </div>
+  
+</nav>
+
+
+
+    </div>
+    <div class="flex md:hidden">
+      <div class="flex items-center h-14 gap-4">
+  
+    <button
+      id="search-button-mobile"
+      aria-label="Search"
+      class="flex items-center justify-center bf-icon-color-hover"
+      title="搜索 (/)">
+      <span class="relative block icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+    </button>
+  
+
+  
+    <button
+      id="appearance-switcher-mobile"
+      type="button"
+      aria-label="Dark mode switcher"
+      class="flex items-center justify-center text-neutral-900 hover:text-primary-600 dark:text-neutral-200 dark:hover:text-primary-400">
+      <div class="dark:hidden">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span>
+      </div>
+      <div class="hidden dark:block">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span>
+      </div>
+    </button>
+  
+
+  
+    <input type="checkbox" id="mobile-menu-toggle" autocomplete="off" class="hidden peer">
+    <label for="mobile-menu-toggle" class="flex items-center justify-center cursor-pointer bf-icon-color-hover">
+      <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+    </label>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      style="scrollbar-gutter: stable;"
+      class="fixed inset-0 z-50 invisible overflow-y-auto px-6 py-20 opacity-0 transition-[opacity,visibility] duration-300 peer-checked:visible peer-checked:opacity-100 bg-neutral-50/97 dark:bg-neutral-900/99
+      bf-scrollbar">
+      <label
+        for="mobile-menu-toggle"
+        class="fixed end-8 top-5 flex items-center justify-center z-50 h-12 w-12 cursor-pointer select-none rounded-full bf-icon-color-hover border bf-border-color bf-border-color-hover bg-neutral-50 dark:bg-neutral-900">
+        <span class="relative block icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </label>
+      <nav class="mx-auto max-w-md space-y-6">
+        
+  
+    
+    <div class="px-2">
+      <a
+        href="/posts/"
+        aria-label="归档"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="归档" class="text-2xl font-bold tracking-tight">
+          归档
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/tags/"
+        aria-label="标签"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Tags" class="text-2xl font-bold tracking-tight">
+          标签
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/about/"
+        aria-label="关于"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="关于" class="text-2xl font-bold tracking-tight">
+          关于
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+
+        
+  
+
+        
+  
+
+      </nav>
+    </div>
+  
 </div>
 
-<script>
-    function doBingSearch(e) {
-        e.preventDefault(); 
-        var keyword = document.getElementById('bing-keyword').value;
-        
-        if (keyword.trim() !== "") {
-            
-            var bingUrl = "[https://www.bing.com/search?q=](https://www.bing.com/search?q=)" + encodeURIComponent(keyword);
-            window.open(bingUrl, '_blank'); 
-            document.getElementById('bing-keyword').value = ''; 
-            document.getElementById('bing-keyword').blur(); 
-        }
-    }
-</script>
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
   </div>
 </div>
 
@@ -499,7 +817,7 @@ categories: ["技术教程"]
         
         class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
         <h2>
-          为 Hugo 博客添加丝滑的“毛玻璃”必应站内搜索
+          为个人网站添加必应搜索
           
         </h2>
       </a>
@@ -553,7 +871,7 @@ categories: ["技术教程"]
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="2026-02-18T22:50:00&#43;08:00">February 18, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>790 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">2 分钟</span>
+      <time datetime="2026-02-18T22:50:00&#43;08:00">February 18, 2026</time><span class="px-2 text-primary-500">&middot;</span><span>1014 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">3 分钟</span>
     
 
     
