@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>© 2026 PigWorm</copyright>
-    <lastBuildDate>Mon, 16 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://pigwormkoishi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 18 Feb 2026 22:50:00 +0800</lastBuildDate><atom:link href="https://pigwormkoishi.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>为 Hugo 博客添加丝滑的“毛玻璃”必应站内搜索</title>
+      <link>https://pigwormkoishi.github.io/posts/bing/</link>
+      <pubDate>Wed, 18 Feb 2026 22:50:00 +0800</pubDate>
+      
+      <guid>https://pigwormkoishi.github.io/posts/bing/</guid>
+      <description>&lt;p&gt;使用 Hugo 构建静态博客时，站内搜索一直是个绕不开的话题。很多人会选择本地索引库（如 Fuse.js 或 Pagefind），但这往往会增加编译时间或需要额外的配置。&lt;/p&gt;</description>
+      
+    </item>
     
     <item>
       <title>进阶折腾：3D 粒子重构与镜头景深 (DoF) 特效</title>
