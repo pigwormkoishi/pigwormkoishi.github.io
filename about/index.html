@@ -57,14 +57,14 @@
   <meta property="og:url" content="https://pigwormkoishi.github.io/about/">
   <meta property="og:site_name" content="PigWorm | 甲基硫代磷酸二乙酯 的个人主页">
   <meta property="og:title" content="关于">
-  <meta property="og:description" content="🙋‍♂️ 我是谁 # 我是 PigWorm或甲基硫代磷酸二乙酯，一个喜欢折腾但又总是不切实际的“完美主义者”。">
+  <meta property="og:description" content="🙋‍♂️ 我是谁 # 我是 (PigWorm||甲基硫代磷酸二乙酯)，一个喜欢折腾但总不切实际的“完美主义者”。">
   <meta property="og:locale" content="zh_cn">
   <meta property="og:type" content="article">
 
   
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="关于">
-  <meta name="twitter:description" content="🙋‍♂️ 我是谁 # 我是 PigWorm或甲基硫代磷酸二乙酯，一个喜欢折腾但又总是不切实际的“完美主义者”。">
+  <meta name="twitter:description" content="🙋‍♂️ 我是谁 # 我是 (PigWorm||甲基硫代磷酸二乙酯)，一个喜欢折腾但总不切实际的“完美主义者”。">
 
   
   
@@ -234,7 +234,7 @@
     
     
     "mainEntityOfPage": "true",
-    "wordCount": "102"
+    "wordCount": "122"
   }]
   </script>
 
@@ -301,11 +301,61 @@
     <div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
   
   
+  
     <a href="/" class="text-base font-medium truncate min-w-0 shrink">
       PigWorm | 甲基硫代磷酸二乙酯 的个人主页
     </a>
   
-  <div class="flex items-center ms-auto">
+  
+  <style>
+      .bing-search-wrapper { display: flex; align-items: center; justify-content: center; width: 100%; }
+      .bing-search-input {
+          background: rgba(150, 150, 150, 0.1); 
+          border: 1px solid rgba(150, 150, 150, 0.2);
+          border-radius: 20px;
+          padding: 5px 16px;  
+          font-size: 13.5px;
+          color: inherit; 
+          outline: none;
+          width: 240px;  
+          transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+      }
+      .bing-search-input:focus {
+          width: 340px;  
+          border-color: #98FB98; 
+          box-shadow: 0 0 8px rgba(152, 251, 152, 0.3);
+          background: rgba(150, 150, 150, 0.15);
+      }
+      .bing-search-input::placeholder { color: inherit; opacity: 0.5; }
+  </style>
+
+  <div class="flex-1 justify-center hidden md:flex"> 
+      <div class="bing-search-wrapper">
+          <form onsubmit="doBingSearch(event)" style="margin: 0; padding: 0;">
+              <input type="text" id="bing-keyword" class="bing-search-input" placeholder="Bing 搜索..." autocomplete="off">
+          </form>
+      </div>
+  </div>
+
+  <script>
+      function doBingSearch(e) {
+          e.preventDefault(); 
+          var keyword = document.getElementById('bing-keyword').value;
+          
+          
+          var domain = "pigwormkoishi.github.io"; 
+          
+          if (keyword.trim() !== "") {
+              var bingUrl = "https://www.bing.com/search?q=site:" + domain + " " + encodeURIComponent(keyword);
+              window.open(bingUrl, '_blank'); 
+              document.getElementById('bing-keyword').value = '';
+              document.getElementById('bing-keyword').blur(); 
+          }
+      }
+  </script>
+  <div class="flex items-center ms-auto shrink-0">
     <div class="hidden md:flex">
       <nav class="flex items-center gap-x-5 h-12">
   
@@ -316,12 +366,30 @@
       href="/posts/"
       
       class="flex items-center bf-icon-color-hover"
-      aria-label="博客"
-      title="Posts">
+      aria-label="归档"
+      title="归档">
       
       
         <span class="text-base font-medium break-normal">
-          博客
+          归档
+        </span>
+      
+    </a>
+  
+
+    
+      
+  
+    <a
+      href="/tags/"
+      
+      class="flex items-center bf-icon-color-hover"
+      aria-label="标签"
+      title="Tags">
+      
+      
+        <span class="text-base font-medium break-normal">
+          标签
         </span>
       
     </a>
@@ -442,12 +510,29 @@
     <div class="px-2">
       <a
         href="/posts/"
-        aria-label="博客"
+        aria-label="归档"
         
         class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
         
-        <span title="Posts" class="text-2xl font-bold tracking-tight">
-          博客
+        <span title="归档" class="text-2xl font-bold tracking-tight">
+          归档
+        </span>
+        
+      </a>
+
+      
+    </div>
+  
+    
+    <div class="px-2">
+      <a
+        href="/tags/"
+        aria-label="标签"
+        
+        class="flex items-center gap-4 group bf-icon-color-hover text-neutral-700 dark:text-neutral-200">
+        
+        <span title="Tags" class="text-2xl font-bold tracking-tight">
+          标签
         </span>
         
       </a>
@@ -493,7 +578,6 @@
     </div>
   </div>
 </div>
-
 
 
 
@@ -655,7 +739,7 @@
   <div class="flex flex-row flex-wrap items-center">
     
     
-      <time datetime="0001-01-01T00:00:00&#43;00:00">January 1, 1</time><span class="px-2 text-primary-500">&middot;</span><span>102 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
+      <time datetime="0001-01-01T00:00:00&#43;00:00">January 1, 1</time><span class="px-2 text-primary-500">&middot;</span><span>122 字</span><span class="px-2 text-primary-500">&middot;</span><span title="预计阅读">1 分钟</span>
     
 
     
@@ -856,7 +940,7 @@
     </span>
     
 </h3>
-<p>我是 <strong>PigWorm</strong>或<strong>甲基硫代磷酸二乙酯</strong>，一个喜欢折腾但又总是不切实际的“完美主义者”。</p>
+<p>我是 (<strong>PigWorm</strong>||<strong>甲基硫代磷酸二乙酯</strong>)，一个喜欢折腾但总不切实际的“完美主义者”。</p>
 
 <h3 class="relative group">🎸 爱好
     <div id="-爱好" class="anchor"></div>
@@ -870,6 +954,7 @@
 <ul>
 <li><strong>钢笔</strong>：喜欢收集钢笔。</li>
 <li><strong>吉他</strong>：指弹吉他爱好者。</li>
+<li><strong><del>Vibe Coding</del></strong>：<del>AI太好用了你知道吗。</del></li>
 </ul>
 
 <h3 class="relative group">📬 联系我
