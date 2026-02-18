@@ -15,7 +15,7 @@
       <pubDate>Wed, 18 Feb 2026 22:50:00 +0800</pubDate>
       
       <guid>https://pigwormkoishi.github.io/posts/bing/</guid>
-      <description>&lt;p&gt;使用 Hugo 构建静态博客时，站内搜索一直是个绕不开的话题。很多人会选择本地索引库（如 Fuse.js 或 Pagefind），但这往往会增加编译时间或需要额外的配置。&lt;/p&gt;</description>
+      <description>&lt;p&gt;使用 Hugo 构建静态博客时，产生了将其作为浏览器主页的想法，既然要将其作为浏览器主页，那互联网搜索功能必不可少。&lt;/p&gt;&#xA;&lt;p&gt;对于个人博客而言，我更倾向于一种&lt;strong&gt;少即是多&lt;/strong&gt;的轻量级方案：直接调用必应 (Bing) 搜索。零配置、零维护成本、完全白嫖搜索引擎的算力。&lt;/p&gt;</description>
       
     </item>
     
