@@ -323,7 +323,8 @@
 
       .bing-search-input {
           background: rgba(150, 150, 150, 0.1); 
-          border: 1px solid rgba(150, 150, 150, 0.2);
+           
+          border: 1px solid rgba(130, 130, 130, 0.5); 
           border-radius: 20px;
           padding: 5px 16px; 
           font-size: 13.5px;
@@ -345,21 +346,20 @@
        
       .bing-suggest-box {
           position: absolute;
-          top: 110%;  
+          top: 110%; 
           left: 0;
           width: 100%;
           background: rgba(255, 255, 255, 0.1);
           backdrop-filter: blur(12px);
           -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(150, 150, 150, 0.2);
+          border: 1px solid rgba(130, 130, 130, 0.5);  
           border-radius: 12px;
           box-shadow: 0 8px 16px rgba(0,0,0,0.1);
           overflow: hidden;
-          display: none;  
+          display: none; 
           z-index: 9999;
       }
       
-       
       .dark .bing-suggest-box { background: rgba(30, 30, 30, 0.6); }
       .light .bing-suggest-box { background: rgba(255, 255, 255, 0.6); }
 
@@ -374,7 +374,7 @@
           text-overflow: ellipsis;
       }
       .bing-suggest-item:hover {
-          background: rgba(152, 251, 152, 0.3);  
+          background: rgba(152, 251, 152, 0.3); 
       }
   </style>
 
@@ -394,7 +394,6 @@
       const suggestBox = document.getElementById('bing-suggest-box');
       let debounceTimer = null;
 
-      
       function doBingSearch(e, directKeyword = null) {
           if(e) e.preventDefault(); 
           let keyword = directKeyword || searchInput.value;
@@ -407,7 +406,6 @@
           }
       }
 
-      
       searchInput.addEventListener('input', function() {
           clearTimeout(debounceTimer);
           let keyword = this.value.trim();
@@ -417,47 +415,35 @@
               return;
           }
 
-          
           debounceTimer = setTimeout(() => {
-              
               let script = document.createElement('script');
               script.src = `https://api.bing.com/osjson.aspx?query=${encodeURIComponent(keyword)}&JsonType=callback&JsonCallback=renderBingSuggest`;
               document.body.appendChild(script);
-              
-              
               script.onload = () => document.body.removeChild(script);
           }, 250);
       });
 
-      
       window.renderBingSuggest = function(data) {
-          
           let suggests = data[1] || [];
-          
           if (suggests.length === 0) {
               suggestBox.style.display = 'none';
               return;
           }
 
           suggestBox.innerHTML = ''; 
-          
-          
           suggests.slice(0, 6).forEach(word => {
               let div = document.createElement('div');
               div.className = 'bing-suggest-item';
               div.textContent = word;
-              
               div.onclick = function() {
                   searchInput.value = word;
                   doBingSearch(null, word);
               };
               suggestBox.appendChild(div);
           });
-          
           suggestBox.style.display = 'block'; 
       };
 
-      
       document.addEventListener('click', function(e) {
           if (e.target !== searchInput && e.target !== suggestBox) {
               suggestBox.style.display = 'none';
