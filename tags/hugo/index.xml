@@ -21,40 +21,40 @@
     
     <item>
       <title>为个人网站添加必应搜索</title>
-      <link>https://pigwormkoishi.github.io/posts/bing/</link>
+      <link>https://pigwormkoishi.github.io/posts/hugo/bing/</link>
       <pubDate>Wed, 18 Feb 2026 22:50:00 +0800</pubDate>
       
-      <guid>https://pigwormkoishi.github.io/posts/bing/</guid>
+      <guid>https://pigwormkoishi.github.io/posts/hugo/bing/</guid>
       <description>&lt;p&gt;使用 Hugo 构建静态博客时，产生了将其作为浏览器主页的想法，既然要将其作为浏览器主页，那互联网搜索功能必不可少。&lt;/p&gt;&#xA;&lt;p&gt;对于个人博客而言，我更倾向于一种&lt;strong&gt;少即是多&lt;/strong&gt;的轻量级方案：直接调用必应 (Bing) 搜索。零配置、零维护成本、完全白嫖搜索引擎的算力。&lt;/p&gt;</description>
       
     </item>
     
     <item>
-      <title>进阶折腾：3D 粒子重构与镜头景深 (DoF) 特效</title>
-      <link>https://pigwormkoishi.github.io/posts/particle/</link>
+      <title>PigWorm个人网站:3D粒子重构与镜头景深 (DoF) 特效</title>
+      <link>https://pigwormkoishi.github.io/posts/hugo/particle/</link>
       <pubDate>Mon, 16 Feb 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://pigwormkoishi.github.io/posts/particle/</guid>
+      <guid>https://pigwormkoishi.github.io/posts/hugo/particle/</guid>
       <description>记录 PigWorm 个人网站底层视觉体验的极致打磨：基于双层级图层的景深粒子特效，以及跟随光标的动态焦外散景。</description>
       
     </item>
     
     <item>
-      <title>进阶折腾：PigWorm 个人网站 Live2D 移动端深度适配实录</title>
-      <link>https://pigwormkoishi.github.io/posts/live2d/</link>
+      <title>PigWorm 个人网站:Live2D 移动端深度适配实录</title>
+      <link>https://pigwormkoishi.github.io/posts/hugo/live2d/</link>
       <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://pigwormkoishi.github.io/posts/live2d/</guid>
+      <guid>https://pigwormkoishi.github.io/posts/hugo/live2d/</guid>
       <description>记录为个人博客 Live2D 看板娘解锁移动端显示，并解决一系列 CSS 与 JS 冲突的硬核 Debug 过程。</description>
       
     </item>
     
     <item>
-      <title>从零开始：PigWorm 的个人网站设计日志</title>
-      <link>https://pigwormkoishi.github.io/posts/hugo/</link>
+      <title>PigWorm 的个人网站：最初设计</title>
+      <link>https://pigwormkoishi.github.io/posts/hugo/pigworm/</link>
       <pubDate>Sat, 14 Feb 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://pigwormkoishi.github.io/posts/hugo/</guid>
+      <guid>https://pigwormkoishi.github.io/posts/hugo/pigworm/</guid>
       <description>记录 PigWorm 个人网站从报错不断到平稳运行的折腾历程。</description>
       
     </item>

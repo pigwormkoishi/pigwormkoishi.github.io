@@ -20,11 +20,11 @@
     </item>
     
     <item>
-      <title>进阶折腾：PigWorm 个人网站 Live2D 移动端深度适配实录</title>
-      <link>https://pigwormkoishi.github.io/posts/live2d/</link>
+      <title>PigWorm 个人网站:Live2D 移动端深度适配实录</title>
+      <link>https://pigwormkoishi.github.io/posts/hugo/live2d/</link>
       <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
       
-      <guid>https://pigwormkoishi.github.io/posts/live2d/</guid>
+      <guid>https://pigwormkoishi.github.io/posts/hugo/live2d/</guid>
       <description>记录为个人博客 Live2D 看板娘解锁移动端显示，并解决一系列 CSS 与 JS 冲突的硬核 Debug 过程。</description>
       
     </item>
